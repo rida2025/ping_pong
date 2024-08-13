@@ -1,0 +1,17 @@
+.gameContainer {
+    background-color: green;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.canvass {
+    background-color: yellow;
+    display: block; /* Removes any extra space below the canvas */
+    /* width: 100%; */
+    position: relative;
+    /* height: 100%; */
+    /* overflow: hidden; */
+    /* position: relative; */
+}

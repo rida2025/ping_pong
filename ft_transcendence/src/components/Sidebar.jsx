@@ -14,7 +14,7 @@ function Sidebar() {
                 </Link>
             </div>
             <ul>
-                <li><Link to="/home"><img src="assets/icons/home.svg"/><p>Home</p></Link></li>
+                <li><Link to="/"><img src="assets/icons/home.svg"/><p>Home</p></Link></li>
                 <li><Link to="/chat"><img src="assets/icons/chat.svg"/><p>Chat</p></Link></li>
                 <li><Link to="/game"><img src="assets/icons/logo.svg"/><p>Game</p></Link></li>
                 <li><Link to="/achievement"><img src="assets/icons/achievement.svg"/><p>Achievement</p></Link></li>
