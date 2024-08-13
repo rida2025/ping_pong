@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure container takes full height of viewport */
+.container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+/* Sidebar styles (assuming you have this in Sidebar.Module.css) */
+.side-nav {
+  width: 250px; /* Default width of the sidebar */
+  background-color: blue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  transition: width 0.3s ease;
+}
+
+/* Main content styles */
+.main-content {
+  flex-grow: 1; /* Take up remaining space */
+  background-color: red; /* Example background color */
+  padding: 20px; /* Add some padding for spacing */
+  overflow: auto; /* Handle overflow if content is too large */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .side-nav {
+      width: 60px; /* Shrink sidebar on smaller screens */
+  }
+
+  .main-content {
+      margin-left: 60px; /* Adjust margin for shrinking sidebar */
+  }
+}
