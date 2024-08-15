@@ -5,12 +5,13 @@ import './Sidebar.Module.css'; // Correct file name
 function Sidebar() {
     return (
         <div className="side-nav">
-            <div className="user"><Link to="/profile">
-                <img src="assets/icons/user.svg" className="user-img" alt="User Icon" />
-                <div>
-                    <h2>Mohammed Reda</h2>
-                    <p>redaeljirari@gmail.com</p>
-                </div>
+            <div className="user">
+                <Link to="/profile">
+                    <img src="assets/icons/user.svg" className="user-img" alt="User Icon" />
+                    <div>
+                        <h2>Mohammed Reda</h2>
+                        <p>redaeljirari@gmail.com</p>
+                    </div>
                 </Link>
             </div>
             <ul>
