@@ -5,7 +5,7 @@ const TournamentMainboard = () => {
   return (
     <div className={styles.last}>
     <div className={styles.play}>
-        {/* <div className={styles.starting}>
+        <div className={styles.starting}>
             <div className={styles.cnt}>
                 <div className={styles.inp}>
                     <input type="text" placeholder="Player 1"/>
@@ -22,7 +22,7 @@ const TournamentMainboard = () => {
                     <input type="text" placeholder="Player 4"/>
                 </div>
             </div>
-        </div> */}
+        </div>
         <div className={styles.matchBegin}>
             <div className={styles.startCard}>
                 <div className={styles.gameCard}>
