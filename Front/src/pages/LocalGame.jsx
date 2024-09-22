@@ -42,6 +42,7 @@ export default function LocalGame() {
             ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
             ctx.fillRect(canvas.clientWidth / 2-3,0, 6, canvas.height);
             ctx.fill();
+            racketHeight = (canvas.height * 20 / 100);
         };
 
         const drawLeftRacket = () => {
@@ -49,7 +50,6 @@ export default function LocalGame() {
             racketWidth = (canvas.width * 2.5 / 100);
             if (racketWidth > 16)
                 racketWidth = 16;
-            racketHeight = (canvas.height * 20 / 100);
             ctx.fillRect(0, leftRacketY, racketWidth, racketHeight);
         }
 
@@ -58,7 +58,6 @@ export default function LocalGame() {
             racketWidth = (canvas.width * 2.5 / 100);
             if (racketWidth > 16)
                 racketWidth = 16;
-            racketHeight = (canvas.height * 20 / 100);
             ctx.fillRect(canvas.width-racketWidth, rightRacketY, racketWidth, racketHeight);
         }
 
@@ -104,7 +103,7 @@ export default function LocalGame() {
                     setCondition('S');
                     mycondition = 'S';
                     document.getElementById('result').style.display = "block";
-                    setWinner("Mohammed");
+                    setWinner("Left Player");
                     setScore(3);
                 }
             } else if (-(canvas.width / 2) + 15 > ballx) {
@@ -118,7 +117,7 @@ export default function LocalGame() {
                     setCondition('S');
                     mycondition = 'S';
                     document.getElementById('result').style.display = "block";
-                    setWinner("Local friend");
+                    setWinner("Right Player");
                     setScore(3);
                 }
             }

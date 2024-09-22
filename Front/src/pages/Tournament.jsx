@@ -1,17 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Tournament.module.css'
-import TournamentBoard from './components/TournamentBoard/TournamentBoard'
-import TournamentMainboard from './components/TournamentMainboard/TournamentMainboard'
+import StartTournament from './components/StartTournament.jsx'
+import { ContextProvider } from './context/TournamentContext.jsx';
 
 const Tournament = () => {
+
   return (
-    <div className={styles.tournament}>
-        <div className={styles.content}>
-            <TournamentBoard />
-            <TournamentMainboard />
-        </div>
-    </div>
-  )
-}
+    <ContextProvider>
+      <StartTournament/>
+    </ContextProvider>
+  );
+};
 
 export default Tournament

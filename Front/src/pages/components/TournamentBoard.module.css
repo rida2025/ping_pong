@@ -5,11 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin: 1rem;
-    padding: 1rem;
     border: solid 1px white;
-    border-radius: 20px;
+    border-radius: 1rem;
 }
 
 .etaps {
@@ -19,19 +16,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10%;
+    padding: 1rem;
+    /* margin: 1rem; */
+    gap: 1rem;
 }
 
 .gameCard {
-    width: 60%;
-    height: 200px;
+    width: 100%;
+    height: 50%;
     display: flex;
     border: solid 1px white;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.2);
-    @media (max-width: 1900px) {
-        width: 90%; 
-    }
 }
 
 .player {
@@ -62,7 +58,7 @@
     justify-content: center;
     align-items: center;
     p {
-        font-size: 25px;
+        font-size: 1rem;
         color: white;
     }
 }
@@ -74,7 +70,7 @@
     justify-content: center;
     align-items: center;
     p {
-        font-size: 25px;
+        font-size: 1rem;
         color: white;
     }
 }
@@ -85,47 +81,61 @@
     border: solid 1px white;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.2);
-    @media (max-width: 1024px) {
-        height: 100px;
-    }
 } 
 
-@media (max-width: 1280px) {
-    .gameCard {
-        height: 150px;
-    }
-    .player {
-        width: 40%;
-    }
+@media (max-width: 1200px) {
     .userImage {
         img {
-            width: 60px;
-            height: 60px;
+            width: 30px;
+            height: 30px;
         }
     }
     .userName {
         p {
-            font-size: 20px;
+            font-size: 0.5rem;
         }
     }
     .vs {
-        width: 20%;
+        p {
+            font-size: 0.5rem;
+        }
     }
 }
 
-@media (max-width: 1024px) {
-    .gameCard {
-        height: 100px;
-    }
+@media (max-width: 800px) {
     .userImage {
         img {
-            width: 50px;
-            height: 50px;
+            width: 35px;
+            height: 35px;
         }
     }
     .userName {
         p {
-            font-size: 16px;
+            font-size: 0.6rem;
+        }
+    }
+    .vs {
+        p {
+            font-size: 0.6rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .userImage {
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    .userName {
+        p {
+            font-size: 0.5rem;
+        }
+    }
+    .vs {
+        p {
+            font-size: 0.5rem;
         }
     }
 }

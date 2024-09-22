@@ -11,6 +11,7 @@ import None from './pages/None.jsx';
 import style from './App.module.css'
 import Game from './pages/Game.jsx'
 import LocalGame from './pages/LocalGame.jsx'
+import LocalTeamGame from './pages/LocalTeamGame.jsx'
 import OnlineGame from './pages/OnlineGame.jsx'
 import Tournament from './pages/Tournament.jsx'
 import { useState, useEffect } from 'react';
@@ -28,6 +29,7 @@ function App() {
             <Route path="/"element={<Home/>}/>
             <Route path="/game"element={<Game />}/>
             <Route path="/localpong"element={<LocalGame />}/>
+            <Route path="/localteampong"element={<LocalTeamGame />}/>
             <Route path="/onlinepong"element={<OnlineGame />}/>
             <Route path="/tournament"element={<Tournament />}/>
             <Route path="/chat"element={<Chat/>}/>

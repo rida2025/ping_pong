@@ -27,6 +27,10 @@ export default function Game() {
                         <Link to="/tournament"><img src="assets/This_is_fine.png" alt="Ping Pong Tournament"/></Link>
                     </div>
                     <div className={gamestyle.game_card}>
+                        <h1>Local Team Pong</h1>
+                        <Link to="/localteampong"><img src="assets/icons/localpong.png" alt="Unknown Game"/></Link>
+                    </div>
+                    <div className={gamestyle.game_card}>
                         <h1>Unknown Game</h1>
                         <Link to="/unknowngame"><img src="assets/icons/localpong.png" alt="Unknown Game"/></Link>
                     </div>
