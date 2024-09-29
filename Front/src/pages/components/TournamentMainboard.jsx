@@ -2,12 +2,24 @@ import React from 'react'
 import styles from './TournamentMainboard.module.css'
 import { useGlobalContext } from '../context/TournamentContext.jsx';
 
-const startleftgame = () => {
-    const { leftgameStatus, setLeftGameStatus} = useGlobalContext();
-    setLeftGameStatus('started');
-}
-
 const TournamentMainboard = () => {
+
+    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name, setLeftGameStatus, setRightGameStatus, setFinalGameStatus,
+     } = useGlobalContext();
+
+    const startleftgame = () => {
+        const { leftgameStatus, setLeftGameStatus} = useGlobalContext();
+        setLeftGameStatus('started');
+    }
+
+    const startrightgame = () => { 
+        setRightGameStatus('started');
+    }
+
+    const startfinalgame = () => {
+        setFinalGameStatus('started');
+    }
+
   return (
     <div className={styles.last}>
         <div className={styles.play}>
@@ -36,7 +48,7 @@ const TournamentMainboard = () => {
                     </div>
                     </div>
                     {/* incase if already played it i should not display start */}
-                    <div className={styles.startButton}>
+                    <div className={styles.startButton} style={{display: 'flex'}}>
                         <button onClick={startleftgame}>Start Match</button>
                     </div>
                     {/* incase if already played it should display this*/}
@@ -80,10 +92,10 @@ const TournamentMainboard = () => {
                         </div>
                     </div>
                     </div>
-                    <div className={styles.startButton} style={{display: 'flex'}}>
+                    <div className={styles.startButton} style={{display: 'none'}}>
                         <button>Start Match</button>
                     </div>
-                    <div className={styles.youWin} style={{display: 'none'}}>
+                    <div className={styles.youWin} style={{display: 'flex'}}>
                         <div className={styles.str}>
                             <p >WIN</p>
                         </div>

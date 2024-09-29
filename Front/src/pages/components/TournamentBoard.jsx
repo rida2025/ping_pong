@@ -1,7 +1,11 @@
 import React from 'react'
 import styles from './TournamentBoard.module.css'
+import { useGlobalContext } from '../context/TournamentContext.jsx';
 
 const TournamentBoard = () => {
+
+    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name } = useGlobalContext();
+    
   return (
     <div className={styles.first}>
         <div className={styles.etaps}>
@@ -11,7 +15,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player1Name} </p>
                     </div>
                 </div>
                 <div className={styles.vs}>
@@ -22,7 +26,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player2Name} </p>
                     </div>
                 </div>
             </div>
@@ -32,7 +36,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player3Name} </p>
                     </div>
                 </div>
                 <div className={styles.vs}>
@@ -43,7 +47,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player4Name} </p>
                     </div>
                 </div>
             </div>
@@ -55,7 +59,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player5Name} </p>
                     </div>
                 </div>
                 <div className={styles.vs}>
@@ -66,7 +70,7 @@ const TournamentBoard = () => {
                         <img src="assets/icons/mel-jira.jpeg"/>
                     </div>
                     <div className={styles.userName}>
-                        <p > mel-jira </p>
+                        <p > {player6Name} </p>
                     </div>
                 </div>
             </div>
@@ -77,7 +81,7 @@ const TournamentBoard = () => {
                 <img src="assets/icons/mel-jira.jpeg"/>
             </div>
             <div className={styles.userName}>
-                <p > mel-jira </p>
+                <p > {player7Name} </p>
             </div>
             </div>
         </div>

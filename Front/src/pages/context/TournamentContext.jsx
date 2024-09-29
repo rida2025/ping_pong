@@ -9,10 +9,15 @@ export const ContextProvider = ({ children }) => {
   const [player2Name, setPlayer2Name] = useState('Player 2');
   const [player3Name, setPlayer3Name] = useState('Player 3');
   const [player4Name, setPlayer4Name] = useState('Player 4');
+  const [player5Name, setPlayer5Name] = useState('Unknown');
+  const [player6Name, setPlayer6Name] = useState('Unkonwn');
+  const [player7Name, setPlayer7Name] = useState('Unkonwn');
+
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
   const [player3Score, setPlayer3Score] = useState(0);
   const [player4Score, setPlayer4Score] = useState(0);
+  
   const [TournamentStart, setTournamentStart] = useState('no');
   const [leftgameStatus, setLeftGameStatus] = useState('waiting');
   const [rightgameStatus, setRightGameStatus] = useState('waiting');
