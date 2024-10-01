@@ -120,15 +120,14 @@ export default function GameComponent({ type }) {
                 if (left_score >= 3){
                     setCondition('S');
                     mycondition = 'S';
-                    document.getElementById('result').style.display = "none";
                     if (type === "left"){
-                        setPlayer5Name(leftplayer);
+                        setPlayer5Name(player1Name);
                     }
                     else if (type === "right"){
-                        setPlayer6Name(leftplayer);
+                        setPlayer6Name(player3Name);
                     }
                     else if (type === "final"){
-                        setPlayer7Name(leftplayer);
+                        setPlayer7Name(player5Name);
                     }
                     setGameStatus(false);
                 }
@@ -142,15 +141,14 @@ export default function GameComponent({ type }) {
                 if (right_score >= 3){
                     setCondition('S');
                     mycondition = 'S';
-                    document.getElementById('result').style.display = "none";
                     if (type === "left"){
-                        setPlayer5Name(rightplayer);
+                        setPlayer5Name(player2Name);
                     }
                     else if (type === "right"){
-                        setPlayer6Name(rightplayer);
+                        setPlayer6Name(player4Name);
                     }
                     else if (type === "final"){
-                        setPlayer7Name(rightplayer);
+                        setPlayer7Name(player6Name);
                     }
                     setGameStatus(false);
                 }
