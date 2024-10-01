@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './StartTournament.module.css'
 import TournamentBoard from './TournamentBoard'
-import StartingPage from './MainTournament.jsx'
+import StartingPage from './InputPage.jsx'
 import AfterStart from './TournamentMainboard'
 import { useGlobalContext } from '../context/TournamentContext.jsx';
 

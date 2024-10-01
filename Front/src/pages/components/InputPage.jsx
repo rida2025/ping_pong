@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styles from './MainTournament.module.css'
+import React, { useEffect, useState } from 'react';
+import styles from './InputPage.module.css'
 import { useGlobalContext } from '../context/TournamentContext.jsx';
 
 const MainTournament = () => {
@@ -9,13 +9,33 @@ const MainTournament = () => {
     const [player2Input, setPlayer2Input] = useState('');
     const [player3Input, setPlayer3Input] = useState('');
     const [player4Input, setPlayer4Input] = useState('');
+    const [start, setStart] = useState(true);
+
+    useEffect(() => {  
+        if(player1Input !== '' && player2Input !== '' && player3Input !== '' && player4Input !== ''){
+            if (player1Input !== player2Input && player1Input !== player3Input && player1Input !== player4Input 
+                && player2Input !== player3Input && player2Input !== player4Input && player3Input !== player4Input){
+                if (player1Input.length > 4 && player1Input.length <= 12 && player2Input.length > 4 && player2Input.length <= 12 && player3Input.length > 4 && player3Input.length <= 12 && player4Input.length > 4 && player4Input.length <= 12){
+                    setStart(false);
+                }
+                else
+                    setStart(true);
+            }
+            else
+                setStart(true);
+        }
+        else{
+            setStart(true);
+        }
+    },[player1Input, player2Input, player3Input, player4Input]);
 
     const starttournament = () => {
+        console.log('Start Tournament');
+        setTournamentStart('yes');
         setPlayer1Name(player1Input);
         setPlayer2Name(player2Input);
         setPlayer3Name(player3Input);
         setPlayer4Name(player4Input);
-        setTournamentStart('yes'); // Update the context to indicate the tournament has started
       };
 
     return (
@@ -41,7 +61,7 @@ const MainTournament = () => {
                 </div>
             </div>
             <div className={styles.Button}>
-                <button onClick={starttournament}>Start</button>
+            <button disabled={start} onClick={starttournament} style={{backgroundColor: start ? 'grey' : 'green'}}>Start</button>
             </div>
         </div>
     )

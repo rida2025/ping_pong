@@ -19,9 +19,7 @@ export const ContextProvider = ({ children }) => {
   const [player4Score, setPlayer4Score] = useState(0);
   
   const [TournamentStart, setTournamentStart] = useState('no');
-  const [leftgameStatus, setLeftGameStatus] = useState('waiting');
-  const [rightgameStatus, setRightGameStatus] = useState('waiting');
-  const [finalgameStatus, setFinalGameStatus] = useState('waiting');
+  const [gameStatus, setGameStatus] = useState(false);
 
   return (
     <AppContext.Provider // Fixed this part to use AppContext.Provider
@@ -34,6 +32,12 @@ export const ContextProvider = ({ children }) => {
         setPlayer3Name,
         player4Name,
         setPlayer4Name,
+        player5Name,
+        setPlayer5Name,
+        player6Name,
+        setPlayer6Name,
+        player7Name,
+        setPlayer7Name,
         player1Score,
         setPlayer1Score,
         player2Score,
@@ -44,12 +48,8 @@ export const ContextProvider = ({ children }) => {
         setPlayer4Score,
         TournamentStart,
         setTournamentStart,
-        leftgameStatus,
-        setLeftGameStatus,
-        rightgameStatus,
-        setRightGameStatus,
-        finalgameStatus,
-        setFinalGameStatus
+        gameStatus,
+        setGameStatus,
       }}
     >
       {children}

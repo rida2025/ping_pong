@@ -1,24 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styles from './TournamentMainboard.module.css'
 import { useGlobalContext } from '../context/TournamentContext.jsx';
+import Match from './Match.jsx';
 
 const TournamentMainboard = () => {
 
-    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name, setLeftGameStatus, setRightGameStatus, setFinalGameStatus,
-     } = useGlobalContext();
+    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name, gameStatus, setGameStatus} = useGlobalContext();
 
-    const startleftgame = () => {
-        const { leftgameStatus, setLeftGameStatus} = useGlobalContext();
-        setLeftGameStatus('started');
-    }
+    // const [showGame, setShowGame] = useState(false);
 
-    const startrightgame = () => { 
-        setRightGameStatus('started');
-    }
-
-    const startfinalgame = () => {
-        setFinalGameStatus('started');
-    }
+     const startgame = () => {
+        setGameStatus(true);
+     };
 
   return (
     <div className={styles.last}>
@@ -32,7 +25,7 @@ const TournamentMainboard = () => {
                             <img src="assets/icons/mel-jira.jpeg"/>
                         </div>
                         <div className={styles.userName}>
-                            <p > mel-jira </p>
+                            <p> {player1Name} </p>
                         </div>
                     </div>
                     <div className={styles.vs}>
@@ -43,14 +36,15 @@ const TournamentMainboard = () => {
                             <img src="assets/icons/mel-jira.jpeg"/>
                         </div>
                         <div className={styles.userName}>
-                            <p > mel-jira </p>
+                            <p > {player2Name} </p>
                         </div>
                     </div>
                     </div>
                     {/* incase if already played it i should not display start */}
-                    <div className={styles.startButton} style={{display: 'flex'}}>
-                        <button onClick={startleftgame}>Start Match</button>
+                    <div className={styles.startButton}>
+                        <button onClick={startgame}>Start Match</button>
                     </div>
+                    {gameStatus && <Match type="left"/>}
                     {/* incase if already played it should display this*/}
                     <div className={styles.youWin} style={{display: 'none'}}>
                         <div className={styles.str}>
@@ -61,7 +55,7 @@ const TournamentMainboard = () => {
                                 <img src="assets/icons/mel-jira.jpeg"/>
                             </div>
                             <div className={styles.userName}>
-                                <p > mel-jira </p>
+                                <p > {player5Name} </p>
                             </div>
                         </div>
                     </div>
@@ -77,7 +71,7 @@ const TournamentMainboard = () => {
                             <img src="assets/icons/mel-jira.jpeg"/>
                         </div>
                         <div className={styles.userName}>
-                            <p > mel-jira </p>
+                            <p > {player3Name} </p>
                         </div>
                     </div>
                     <div className={styles.vs}>
@@ -88,7 +82,7 @@ const TournamentMainboard = () => {
                             <img src="assets/icons/mel-jira.jpeg"/>
                         </div>
                         <div className={styles.userName}>
-                            <p > mel-jira </p>
+                            <p > {player4Name} </p>
                         </div>
                     </div>
                     </div>
@@ -104,7 +98,7 @@ const TournamentMainboard = () => {
                                 <img src="assets/icons/mel-jira.jpeg"/>
                             </div>
                             <div className={styles.userName}>
-                                <p > mel-jira </p>
+                                <p > {player6Name} </p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +137,7 @@ const TournamentMainboard = () => {
                             <img src="assets/icons/mel-jira.jpeg"/>
                         </div>
                         <div className={styles.userName}>
-                            <p > mel-jira </p>
+                            <p > {player7Name} </p>
                         </div>
                     </div>
                     </div>
@@ -154,7 +148,7 @@ const TournamentMainboard = () => {
             </div> */}
         </div>
     <div className={styles.Button}>
-        <button>Restart</button>
+        <button onClick={() => window.location.reload()}>Restart</button>
     </div>
 </div>
   )
