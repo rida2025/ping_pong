@@ -147,8 +147,8 @@ export default function LocalGame() {
             drawLeftRacket();
             drawRightRacket();
             gamelogic();
-            console.log('condition', condition);
-            if (condition === 'R')
+            const currentPath = window.location.pathname;
+            if (currentPath === '/localpong' && condition === 'R')
             {
                 return requestAnimationFrame(draw);
             }else

@@ -167,7 +167,6 @@ export default function  OnlineGame() {
                         value: 10,
                     };
                     socket.send(JSON.stringify(message));
-                    console.log('sent w');
                 }
             }
             else if (pressedKeys.current.has('s') && player_id === 1) {
@@ -177,7 +176,6 @@ export default function  OnlineGame() {
                         value: 10,
                     };
                     socket.send(JSON.stringify(message));
-                    console.log('sent s');
                 }
             }
             if (pressedKeys.current.has('ArrowUp') && player_id === 2) {
@@ -187,7 +185,6 @@ export default function  OnlineGame() {
                         value: 10,
                     };
                     socket.send(JSON.stringify(message));
-                    console.log('sent ArrowUp');
                 }
             }
             else if (pressedKeys.current.has('ArrowDown') && player_id === 2) {
@@ -197,7 +194,6 @@ export default function  OnlineGame() {
                         value: 10,
                     };
                     socket.send(JSON.stringify(message));
-                    console.log('sent ArrowDown');
                 }
             }
             drawball();
@@ -239,15 +235,12 @@ export default function  OnlineGame() {
     }, []);
 
     useEffect(() => {
-        console.log('condition', condition, 'gamestarted', gamestarted);
         if (gamestarted){
             document.getElementById('matchmaking').style.display = "none";
             document.getElementById('result').style.display = "none";
-            console.log('condition',    condition);
         }
         if (condition != 'N'){
             document.getElementById('result').style.display = "block";
-            console.log('who the result',    condition);
         }
         if (!gamestarted && condition === 'N')
             document.getElementById('matchmaking').style.display = "block";

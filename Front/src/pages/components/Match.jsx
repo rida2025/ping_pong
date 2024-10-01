@@ -179,8 +179,8 @@ export default function GameComponent({ type }) {
             drawLeftRacket();
             drawRightRacket();
             gamelogic();
-            console.log('condition', condition);
-            if (condition === 'R')
+            const currentPath = window.location.pathname;
+            if (currentPath === '/tournament' && condition === 'N')
             {
                 return requestAnimationFrame(draw);
             }else
