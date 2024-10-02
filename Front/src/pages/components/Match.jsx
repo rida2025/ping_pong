@@ -180,7 +180,7 @@ export default function GameComponent({ type }) {
             drawRightRacket();
             gamelogic();
             const currentPath = window.location.pathname;
-            if (currentPath === '/tournament' && condition === 'N')
+            if (currentPath === '/tournament' && condition === 'R')
             {
                 return requestAnimationFrame(draw);
             }else

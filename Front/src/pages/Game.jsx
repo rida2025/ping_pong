@@ -1,14 +1,17 @@
-import React, {useRef, useEffect, useState } from 'react';
+import React, {useRef, useEffect, useState, useContext } from 'react';
 import * as gamestyle from  './Game.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../UserContext/Context';
 
 export default function Game() {
 
-    document.querySelectorAll('.game-card').forEach(card => {
-        card.addEventListener('click', () => {
-            alert('This game will be available soon!');
-        });
-    });
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    useEffect(() => {
+        if (!user)
+            navigate("/login");
+    }, [user]);
 
     return (
         <>

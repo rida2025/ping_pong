@@ -4,13 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 10.13.10.16 --port 3000",
+    "dev": "vite --host 10.13.1.12 --port 3000",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
+    "axios": "^1.7.7",
+    "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0"

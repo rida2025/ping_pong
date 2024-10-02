@@ -1,44 +1,61 @@
-import React, {useRef, useEffect, useState } from 'react';
+import React, {useRef, useEffect, useState, useContext } from 'react';
 import * as styles from './OnlineGame.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../UserContext/Context';
 
-
-function getOrCreateName() {
-    const storedName = localStorage.getItem('username');
+// function getOrCreateName() {
+//     const storedName = localStorage.getItem('username');
     
-    if (storedName) {
-        return storedName;
-    } else {
-        const newName = generateRandomName();
-        localStorage.setItem('username', newName);
-        return newName;
-    }
-}
+//     if (storedName) {
+//         return storedName;
+//     } else {
+//         const newName = generateRandomName();
+//         localStorage.setItem('username', newName);
+//         return newName;
+//     }
+// }
 
-function generateRandomName() {
-    const firstNames = ["Mohammed", "Reda", "Hassan", "Bilal", "Khalid", "Nour", "Eddine"];
-    const lastNames = ["Jirari", "Jirari","Sobane", "Eddinaoui", "Bouychou", "Ouahidi", "Ouahidi"];
+// function generateRandomName() {
+//     const firstNames = ["Mohammed", "Reda", "Hassan", "Bilal", "Khalid", "Nour", "Eddine"];
+//     const lastNames = ["Jirari", "Jirari","Sobane", "Eddinaoui", "Bouychou", "Ouahidi", "Ouahidi"];
     
-    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-    return `${randomFirstName}${randomLastName}`;
-}
+//     const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+//     const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+//     return `${randomFirstName}${randomLastName}`;
+// }
 
 export default function  OnlineGame() {
 
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    useEffect(() => {
+        console.log('user:', user);
+        if (!user)
+            navigate("/login");
+    }, [user]);
+
     const pressedKeys = useRef(new Set());
     const [ rightScore, setRightScore ] = useState(0);
+    const [ leftplayername, setLeftPlayerName ] = useState("left player");
+    const [ rightplayername, setRightPlayerName ] = useState("right player");
+    const [ leftplayeravatar, setLeftPlayerAvatar ] = useState(user.user.avatar);
+    const [ rightplayeravatar, setRightPlayerAvatar ] = useState("./assets/unknown0.png");
     const [ leftScore, setLeftScore ] = useState(0);
     const [ gamestarted, setGameStarted ] = useState(false);
     const [ condition, setCondition ] = useState('N');
     const [ MESSAGE, setMessage ] = useState("message");
+    const [ username, setUsername ] = useState(user.user.username);
+    const [ avatar, setAvatar ] = useState(user.user.avatar);
 
     useEffect(() => {
-        const username = getOrCreateName();
+        const username = user.user.username;
+        const avatar = user.user.avatar;
+        setLeftPlayerName(username);
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        let game_width = 800;
-        let game_height = 500;
+        const game_width = 800;
+        const game_height = 500;
         let ballx = 0;
         let bally = 0;
         let ball_radius = 0;
@@ -49,14 +66,15 @@ export default function  OnlineGame() {
         let player_id = 0;
         let myReq;
         let pause = 0;
-        let socket = new WebSocket('ws://10.13.10.16:8000/ws/socket-server/');
+        let socket = new WebSocket(`ws://10.13.1.12:8000/ws/socket-server/`);
 
         socket.onopen = () => {
-            console.log('my name is', username);
+            console.log('my name is:', username, "my avatar is:", avatar);
             if (socket.readyState === WebSocket.OPEN) {
                 const message = {
                     action: 'connect',
                     username: username,
+                    avatar: avatar,
                     level: 1,
                 };
                 socket.send(JSON.stringify(message));
@@ -70,13 +88,13 @@ export default function  OnlineGame() {
                 const data = JSON.parse(event.data);
                 console.log('Received:', data)
                 if (data.hasOwnProperty('ballx'))
-                    ballx = (data.ballx / 800) * canvas.width
+                    ballx = (data.ballx / game_width) * canvas.width
                 if (data.hasOwnProperty('bally'))
-                    bally = (data.bally / 500) * canvas.height
+                    bally = (data.bally / game_height) * canvas.height
                 if (data.hasOwnProperty('right_paddleY'))
-                    rightRacketY = (data.right_paddleY / 500) * canvas.height
+                    rightRacketY = (data.right_paddleY / game_height) * canvas.height
                 if (data.hasOwnProperty('left_paddleY'))
-                    leftRacketY = (data.left_paddleY / 500) * canvas.height
+                    leftRacketY = (data.left_paddleY / game_height) * canvas.height
                 if (data.hasOwnProperty('right_score'))
                     setRightScore(data.right_score)
                 if (data.hasOwnProperty('left_score'))
@@ -85,19 +103,29 @@ export default function  OnlineGame() {
                     racketHeight =  data.racketHeight
                 if (data.hasOwnProperty('racketWidth'))
                     racketWidth = data.racketWidth
-                if (data.hasOwnProperty('player_id1') && data.player_id1 === username){
-                    player_id = 1;
-                    console.log('myplayer id is 1');
-                }
-                if (data.hasOwnProperty('player_id2') && data.player_id2 === username){
-                    player_id = 2;
-                    console.log('myplayer id is 2');
-                }
                 if (data.hasOwnProperty('ball_radius'))
-                    ball_radius = ((canvas.height / 800 + canvas.width / 500) / 2) * 15
-                if (data.hasOwnProperty('message')) {
-                    if (data.message === 'Game_started')
+                    ball_radius = ((canvas.height / game_width + canvas.width / game_height) / 2) * 15
+                if (data.message){
+                    if (data.message === 'game_started'){
+                        if (data.player_id1 === username){
+                            player_id = 1;
+                            setLeftPlayerName(data.player_id1);
+                            setRightPlayerName(data.player_id2);
+                            setLeftPlayerAvatar(data.player_1_avatar);
+                            setRightPlayerAvatar(data.player_2_avatar);
+                            console.log("left avatar", data.player_1_avatar, "right avatar", data.player_2_avatar);
+                        }
+                        else if (data.player_id2 === username){
+                            player_id = 2;
+                            setLeftPlayerName(data.player_id1);
+                            setRightPlayerName(data.player_id2);
+                            setLeftPlayerAvatar(data.player_1_avatar);
+                            setRightPlayerAvatar(data.player_2_avatar);
+                            console.log("left avatar", data.player_1_avatar, "right avatar", data.player_2_avatar);
+                        }
                         setGameStarted(true);
+                        console.log("Game started and i have changed gamestarted to true");
+                    }
                     else if (data.message === 'disconnected'){
                         setCondition('D');
                         socket.close();
@@ -235,6 +263,7 @@ export default function  OnlineGame() {
     }, []);
 
     useEffect(() => {
+        console.log("gamestarted", gamestarted);
         if (gamestarted){
             document.getElementById('matchmaking').style.display = "none";
             document.getElementById('result').style.display = "none";
@@ -242,14 +271,10 @@ export default function  OnlineGame() {
         if (condition != 'N'){
             document.getElementById('result').style.display = "block";
         }
-        if (!gamestarted && condition === 'N')
-            document.getElementById('matchmaking').style.display = "block";
     }, [gamestarted, condition]);
 
-    const navigate = useNavigate();
-
     const handleExitClick = () => {
-        navigate('/'); // Redirects to the home page
+        navigate('/game');
     };
 
     return (
@@ -258,16 +283,16 @@ export default function  OnlineGame() {
                 <div className={styles.centered}>
                     <div className={styles.holderx}>
                         <div className={styles.leftplayer}>
-                            <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
-                            <h4>Your Name</h4>
+                            <img src={leftplayeravatar} className={styles.userImg}/>
+                            <h4>{leftplayername}</h4>
                         </div>
                         <div className={styles.vs}>
                             <img src="assets/loading.gif" className={styles.loadingGif}/>
                             <p>VS</p>
                         </div>
                         <div className={styles.leftplayer}>
-                            <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
-                            <h4>Your Name</h4>
+                            <img src={rightplayeravatar} className={styles.userImg}/>
+                            <h4>Unknown</h4>
                         </div>
                     </div>
                     <div className={styles.buttoncontainer}>
@@ -281,7 +306,11 @@ export default function  OnlineGame() {
             <div id="result" className={styles.result}>
                 <div className={styles.centered}>
                     <div className={styles.holderx} style={{height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <h4>{MESSAGE}</h4>
+                        <div className={styles.message}>
+                            <h4>{MESSAGE}</h4>
+                            <img src={avatar}/>
+                            <h3>{username}</h3>
+                        </div>
                         <div className={styles.buttoncontainer}>
                         <div className={styles.Button}>
                             <button onClick={handleExitClick}>Exit</button>
@@ -294,16 +323,16 @@ export default function  OnlineGame() {
             <div className={styles.gameContainer}>
                 <div className={styles.topgame}>
                     <div className={styles.player}>
-                        <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                        <img src={leftplayeravatar} className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>Mohammed</h2>
+                            <h2>{leftplayername}</h2>
                             <h3>score: {leftScore}</h3>
                         </div>
                     </div>
                     <div className={styles.player}>
-                        <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                        <img src={rightplayeravatar} className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>Reda</h2>
+                            <h2>{rightplayername}</h2>
                             <h3>score: {rightScore}</h3>
                         </div>
                     </div>

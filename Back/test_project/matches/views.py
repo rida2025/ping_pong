@@ -11,3 +11,11 @@ def Matches_list(request):
         data = Matches.objects.all()
         serializer = MatchesSerializer(data, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+@api_view(['GET'])
+def Matches_by_user(request, username):
+    if request.method == 'GET':
+        # Filter matches where the username is either player_name_1 or player_name_2
+        data = Matches.objects.filter(player_name_1=username) | Matches.objects.filter(player_name_2=username)
+        serializer = MatchesSerializer(data, many=True)
+        return JsonResponse(serializer.data, safe=False)

@@ -4,3 +4,4 @@ Back/cc
 Back/venv
 *node_modules*
 node_modules
+.env

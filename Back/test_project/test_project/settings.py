@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from datetime import timedelta
+from django.conf import settings
+from dotenv import load_dotenv  # Import dotenv here
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,11 +29,7 @@ SECRET_KEY = 'django-insecure-twzr+o0e2^(^zui4&qs-60b=wko)!a03oqgrmdmj&w29+egj@d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    'localhost:3000',
-    '*',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,14 +37,15 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'channels',
     'rest_framework',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
+    'login',
     'matches',
     'game',
 ]
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'test_project.urls'
@@ -139,3 +141,78 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'withcredentials',  
+]
+
+# *************** jwt ********* 
+
+REST_FRAMEWORK = {
+    
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+#************  khbouych ************
+
+AUTH_USER_MODEL = 'login.Player'
+# JWT settings
+SIMPLE_JWT = {
+   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
+   'ROTATE_REFRESH_TOKENS': True,
+   'BLACKLIST_AFTER_ROTATION': True
+}
+
+
+
+ACCESS_TOKEN_LIFETIME = SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
+REFRESH_TOKEN_LIFETIME = SIMPLE_JWT['REFRESH_TOKEN_LIFETIME']
+
+JWT_COOKIE_SECURE = False
+
+
+# These are used for cookie settings
+JWT_AUTH_COOKIE = 'access_token'
+JWT_AUTH_REFRESH_COOKIE = 'refresh_token'
+JWT_AUTH_SECURE = True  # Set to False in development if not using HTTPS
+JWT_AUTH_SAMESITE = 'Lax'
+JWT_REFRESH_TOKEN_LIFETIME = REFRESH_TOKEN_LIFETIME
+
+CORS_ALLOW_ALL_ORIGINS = True  # Set to True for development, but not recommended for production
+
+CORS_ALLOWED_ORIGINS = [
+    "http://10.13.1.12:3000",  # Your React app's address
+    'http://10.13.1.12:8000',
+    
+]
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': getenv("POSTGRES_DB"),
+#         'USER': getenv("POSTGRES_USER"),
+#         'PASSWORD': getenv("POSTGRES_PASSWORD"),
+#         'HOST': getenv("POSTGRES_HOST"),
+#         'PORT': getenv("POSTGRES_PORT"),
+#     }
+# }
+
+# Load the .env file
+load_dotenv()

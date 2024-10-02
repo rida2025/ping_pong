@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .input {
+    margin: 0 5px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }

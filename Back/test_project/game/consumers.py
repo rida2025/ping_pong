@@ -5,9 +5,13 @@ from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 import asyncio
 from channels.layers import get_channel_layer
+from login.models import Player
+from matches.models import Matches
+from django.utils import timezone
 
 class GameConsumer(AsyncWebsocketConsumer):
     name = ''
+    avatar = ''
     room_group_name = ''
     ingame = False
     admin = None
@@ -70,7 +74,6 @@ class GameConsumer(AsyncWebsocketConsumer):
                     'message': 'disconnected',
                 }
             )
-        print('u told them that the game stopped')
 
     async def receive(self, text_data):
         # print('Received:', text_data)
@@ -94,12 +97,15 @@ class GameConsumer(AsyncWebsocketConsumer):
             GameConsumer.queue[data.get('username')] = {
                 'username': data.get('username'),
                 'level': data.get('level'),
+                'avatar': data.get('avatar'),
                 'channel_name': self.channel_name,
                 'group_name': ''
             }
             self.name = data.get('username')
+            self.avatar = data.get('avatar')
             GameConsumer.instances[self.name] = self
-            print('client connected')
+            print("avatar=[",data.get('avatar'),"]")
+            print('client connected', self.avatar)
             asyncio.create_task(self.monitor_heartbeat())
 
             #now need to check if we have 2 in queue can that be matched
@@ -128,11 +134,13 @@ class GameConsumer(AsyncWebsocketConsumer):
                     print(f'matched player1 {matched_players[0]}, player2 {matched_players[1]}')
                     self.game[matched_players[0]] = {
                         'username': GameConsumer.queue[matched_players[0]]['username'],
+                        'avatar': GameConsumer.queue[matched_players[0]]['avatar'],
                         'level': GameConsumer.queue[matched_players[0]]['level'],
                         'player_id': 1,
                     }
                     self.game[matched_players[1]] = {
                         'username': GameConsumer.queue[matched_players[1]]['username'],
+                        'avatar': GameConsumer.queue[matched_players[1]]['avatar'],
                         'level': GameConsumer.queue[matched_players[1]]['level'],
                         'player_id': 2,
                     }
@@ -155,17 +163,13 @@ class GameConsumer(AsyncWebsocketConsumer):
                         GameConsumer.queue[matched_players[1]]['channel_name']
                     )
                     self.room_group_name = group_name
-                    await self.channel_layer.group_send(
-                        self.room_group_name,
-                        {
-                            'type': 'game_message',
-                            'message': 'Game_started'
-                        }
-                    )
                     print('Game started')
                     data = {
+                        'message': 'game_started',
                         'player_id1': matched_players[0],
+                        'player_1_avatar': self.game[matched_players[0]]['avatar'],
                         'player_id2': matched_players[1],
+                        'player_2_avatar': self.game[matched_players[1]]['avatar'],
                     }
                     await self.channel_layer.group_send(
                         self.room_group_name,
@@ -296,6 +300,23 @@ class GameConsumer(AsyncWebsocketConsumer):
                         'message': data
                     }
                 )
+                # Get a list of all the values in the dictionary
+                values = list(self.game.values())
+
+                # Access the first and second elements
+                first_element = values[0]
+                second_element = values[1]
+                matchs = await sync_to_async(Matches)(
+                    player_name_1=first_element['username'],
+                    player_name_2=second_element['username'],
+                    date=timezone.now().date(),
+                    winner=second_element['username'],
+                    loser=first_element['username'],
+                    left_score=self.left_score,
+                    right_score=self.right_score
+                )
+                await sync_to_async(matchs.save)()
+
 
         elif self.ballx >= self.game_width - 15:
             self.ballx = 400
@@ -317,4 +338,20 @@ class GameConsumer(AsyncWebsocketConsumer):
                     'type': 'game_data',
                     'message': data
                 })
+                # Get a list of all the values in the dictionary
+                values = list(self.game.values())
+
+                first_element = values[0]
+                second_element = values[1]
+                matchs = await sync_to_async(Matches)(
+                    player_name_1=first_element['username'],
+                    player_name_2=second_element['username'],
+                    date=timezone.now().date(),
+                    winner=first_element['username'],
+                    loser=second_element['username'],
+                    left_score=self.left_score,
+                    right_score=self.right_score
+                )
+                await sync_to_async(matchs.save)()
+
         await self.pack_data_to_send()

@@ -179,7 +179,7 @@ export default function LocalGame() {
     const navigate = useNavigate();
 
     const handleExitClick = () => {
-        navigate('/'); // Redirects to the home page
+        navigate('/game');
     };
     return (
         <>
