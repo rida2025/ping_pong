@@ -5,7 +5,7 @@ import Match from './Match.jsx';
 
 const TournamentMainboard = () => {
 
-    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name, gameStatus, setGameStatus} = useGlobalContext();
+    const { player1Name, player2Name, player3Name, player4Name, player5Name, player6Name, player7Name, gameStatus, setGameStatus, player5Avatar, player6Avatar, player7Avatar} = useGlobalContext();
 
     const [matchType, setMatchType] = useState('');
 
@@ -37,7 +37,7 @@ const TournamentMainboard = () => {
                         <div className={styles.gameCard}>
                             <div className={styles.player}>
                             <div className={styles.userImage}>
-                                <img src="assets/icons/mel-jira.jpeg"/>
+                                <img src="assets/battlebeast.png"/>
                             </div>
                             <div className={styles.userName}>
                                 <p> {player1Name} </p>
@@ -48,7 +48,7 @@ const TournamentMainboard = () => {
                         </div>
                         <div className={styles.player}>
                             <div className={styles.userImage}>
-                                <img src="assets/icons/mel-jira.jpeg"/>
+                                <img src="assets/homelander.png"/>
                             </div>
                             <div className={styles.userName}>
                                 <p > {player2Name} </p>
@@ -67,7 +67,7 @@ const TournamentMainboard = () => {
                                 </div>
                                 <div className={styles.userWin}>
                                     <div className={styles.userImage}>
-                                        <img src="assets/icons/mel-jira.jpeg"/>
+                                        <img src={player5Avatar}/>
                                     </div>
                                     <div className={styles.userName}>
                                         <p>{player5Name}</p>
@@ -84,7 +84,7 @@ const TournamentMainboard = () => {
                         <div className={styles.gameCard}>
                             <div className={styles.player}>
                                 <div className={styles.userImage}>
-                                    <img src="assets/icons/mel-jira.jpeg"/>
+                                    <img src="assets/superman.png"/>
                                 </div>
                                 <div className={styles.userName}>
                                     <p > {player3Name} </p>
@@ -95,7 +95,7 @@ const TournamentMainboard = () => {
                             </div>
                             <div className={styles.player}>
                                 <div className={styles.userImage}>
-                                    <img src="assets/icons/mel-jira.jpeg"/>
+                                    <img src="assets/superior.png"/>
                                 </div>
                                 <div className={styles.userName}>
                                     <p > {player4Name} </p>
@@ -113,7 +113,7 @@ const TournamentMainboard = () => {
                                 </div>
                                 <div className={styles.userWin}>
                                     <div className={styles.userImage}>
-                                        <img src="assets/icons/mel-jira.jpeg"/>
+                                        <img src={player6Avatar}/>
                                     </div>
                                     <div className={styles.userName}>
                                         <p>{player6Name}</p>
@@ -131,7 +131,7 @@ const TournamentMainboard = () => {
                     <div className={styles.gameCard}>
                         <div className={styles.player}>
                             <div className={styles.userImage}>
-                                <img src="assets/icons/mel-jira.jpeg"/>
+                                <img src={player5Avatar}/>
                             </div>
                             <div className={styles.userName}>
                                 <p > {player5Name} </p>
@@ -142,7 +142,7 @@ const TournamentMainboard = () => {
                         </div>
                         <div className={styles.player}>
                             <div className={styles.userImage}>
-                                <img src="assets/icons/mel-jira.jpeg"/>
+                                <img src={player6Avatar}/>
                             </div>
                             <div className={styles.userName}>
                                 <p > {player6Name} </p>
@@ -157,7 +157,7 @@ const TournamentMainboard = () => {
                         <h2 >WINER</h2>
                         <div className={styles.player}>
                             <div className={styles.userImage}>
-                                <img src="assets/icons/mel-jira.jpeg"/>
+                                <img src={player7Avatar}/>
                             </div>
                             <div className={styles.userName}>
                                 <p > {player7Name} </p>

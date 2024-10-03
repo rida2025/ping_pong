@@ -25,15 +25,12 @@ function App() {
         <AuthProvider>
       <div className={style.EntirePage}>
         <div>
-          {window.location.pathname !== '/login' && <Sidebar />}
+          <Sidebar />
         </div>
         <div className={style.MainContent}> 
           <Routes>
-           
             <Route path="/"element={<Home/>}> 
-              <Route path="game"element={
-                <Game />
-              }/>
+              <Route path="game"element={<Game />}/>
               <Route path="localpong"element={<LocalGame />}/>
               <Route path="localteampong"element={<LocalTeamGame />}/>
               <Route path="onlinepong"element={<OnlineGame />}/>

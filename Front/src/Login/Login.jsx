@@ -17,10 +17,10 @@ const PongParadise = () => {
   // const myCookie = Cookies.get('token');
   useEffect(() => {
     console.log("before", user);
-    if ((!user)) {
+    if (!user) {
       
       console.log("after", user);
-         auth_intra42();
+        auth_intra42();
     }
 
   }, [user]);

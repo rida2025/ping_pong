@@ -5,8 +5,10 @@ import { useGlobalContext } from '../context/TournamentContext.jsx';
 export default function GameComponent({ type }) {
 
     const [leftplayer, setleftplayer] = useState("left player");
+    const [leftAvatar, setLeftAvatar] = useState("assets/unknown.png");
     const [rightplayer, setrightplayer] = useState("right player");
-    const { player1Name, player2Name, player3Name, player4Name, player5Name,setPlayer5Name, player6Name,setPlayer6Name,setPlayer7Name, gameStatus,setGameStatus} = useGlobalContext();
+    const [rightAvatar, setRightAvatar] = useState("assets/unknown.png");
+    const { player1Name, player2Name, player3Name, player4Name, player5Name,setPlayer5Name, player6Name,setPlayer6Name,setPlayer7Name,setGameStatus,setPlayer5Avatar, setPlayer6Avatar, setPlayer7Avatar, player5Avatar, player6Avatar} = useGlobalContext();
 
     const pressedKeys = useRef(new Set());
     const [rightScore, setRightScore] = useState(0);
@@ -14,15 +16,21 @@ export default function GameComponent({ type }) {
     useEffect(() => {
         if (type === "left"){
             setleftplayer(player1Name);
+            setLeftAvatar("assets/battlebeast.png");
             setrightplayer(player2Name);
+            setRightAvatar("assets/homelander.png");
         }
         else if (type === "right"){
-            setleftplayer(player3Name); 
+            setleftplayer(player3Name);
+            setLeftAvatar("assets/superman.png");
             setrightplayer(player4Name);
+            setRightAvatar("assets/superior.png");
         }
         else if (type === "final"){
             setleftplayer(player5Name);
+            setLeftAvatar(player5Avatar);
             setrightplayer(player6Name);
+            setRightAvatar(player6Avatar);
         }
     }, []);
     
@@ -122,12 +130,15 @@ export default function GameComponent({ type }) {
                     mycondition = 'S';
                     if (type === "left"){
                         setPlayer5Name(player1Name);
+                        setPlayer5Avatar("assets/battlebeast.png");
                     }
                     else if (type === "right"){
                         setPlayer6Name(player3Name);
+                        setPlayer6Avatar("assets/superman.png");
                     }
                     else if (type === "final"){
                         setPlayer7Name(player5Name);
+                        setPlayer7Avatar("assets/battlebeast.png");
                     }
                     setGameStatus(false);
                 }
@@ -143,12 +154,15 @@ export default function GameComponent({ type }) {
                     mycondition = 'S';
                     if (type === "left"){
                         setPlayer5Name(player2Name);
+                        setPlayer5Avatar("assets/homelander.png");
                     }
                     else if (type === "right"){
                         setPlayer6Name(player4Name);
+                        setPlayer6Avatar("assets/superior.png");
                     }
                     else if (type === "final"){
                         setPlayer7Name(player6Name);
+                        setPlayer7Avatar("assets/superior.png");
                     }
                     setGameStatus(false);
                 }
@@ -214,18 +228,16 @@ export default function GameComponent({ type }) {
                     <div className={styles.gameContainer}>
                         <div className={styles.topgame}>
                             <div className={styles.player}>
-                                <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                                <img src={leftAvatar} className={styles.userImg}/>
                                 <div className={styles.playerInfo}>
                                     <h2>{leftplayer}</h2>
-                                    <p>use W to move up && S to move down</p>
                                     <h3>score: {leftScore}</h3>
                                 </div>
                             </div>
                             <div className={styles.player}>
-                                <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                                <img src={rightAvatar} className={styles.userImg}/>
                                 <div className={styles.playerInfo}>
                                     <h2>{rightplayer}</h2>
-                                    <p>use ↑ to move up && ↓ to move down</p>
                                     <h3>score: {rightScore}</h3>
                                 </div>
                             </div>

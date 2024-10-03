@@ -10,8 +10,12 @@ export const ContextProvider = ({ children }) => {
   const [player3Name, setPlayer3Name] = useState('Player 3');
   const [player4Name, setPlayer4Name] = useState('Player 4');
   const [player5Name, setPlayer5Name] = useState('Unknown');
+  const [player5Avatar, setPlayer5Avatar] = useState('assets/unknown.png');
   const [player6Name, setPlayer6Name] = useState('Unknown');
+  const [player6Avatar, setPlayer6Avatar] = useState('assets/unknown.png');
   const [player7Name, setPlayer7Name] = useState('Unknown');
+  const [player7Avatar, setPlayer7Avatar] = useState('assets/unknown.png');
+
 
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
@@ -34,10 +38,16 @@ export const ContextProvider = ({ children }) => {
         setPlayer4Name,
         player5Name,
         setPlayer5Name,
+        player5Avatar,
+        setPlayer5Avatar,
         player6Name,
         setPlayer6Name,
+        player6Avatar,
+        setPlayer6Avatar,
         player7Name,
         setPlayer7Name,
+        player7Avatar,
+        setPlayer7Avatar,
         player1Score,
         setPlayer1Score,
         player2Score,

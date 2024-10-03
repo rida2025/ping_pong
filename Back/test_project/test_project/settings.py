@@ -198,8 +198,8 @@ JWT_REFRESH_TOKEN_LIFETIME = REFRESH_TOKEN_LIFETIME
 CORS_ALLOW_ALL_ORIGINS = True  # Set to True for development, but not recommended for production
 
 CORS_ALLOWED_ORIGINS = [
-    "http://10.13.1.12:3000",  # Your React app's address
-    'http://10.13.1.12:8000',
+    "http://10.11.9.12:3000",  # Your React app's address
+    'http://10.11.9.12:8000',
     
 ]
 

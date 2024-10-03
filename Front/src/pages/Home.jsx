@@ -8,12 +8,12 @@ import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 export default function Home() {
-// const token = localStorage.getItem("token");
-const {user} = useContext(AuthContext);
-
+const {user, auth_intra42} = useContext(AuthContext);
 return (
-       user ? (
+    Cookies.get('token') ? (
+      user ? (
         <Outlet />
+      ) : auth_intra42()
     ) : <Navigate to="/login" />
-);
+  );
 }

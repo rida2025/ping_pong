@@ -253,18 +253,16 @@ export default function LocalGame() {
             <div className={styles.gameContainer}>
                 <div className={styles.topgame}>
                     <div className={styles.player}>
-                        <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                        <img src="assets/superior.png" className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>Mohammed</h2>
-                            <p>use W to move up && S to move down</p>
+                            <h2>Left Team</h2>
                             <h3>score: {leftScore}</h3>
                         </div>
                     </div>
                     <div className={styles.player}>
-                        <img src="assets/icons/mel-jira.jpeg" className={styles.userImg}/>
+                        <img src="assets/battlebeast.png" className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>Local friend</h2>
-                            <p>use ↑ to move up && ↓ to move down</p>
+                            <h2>Right Team</h2>
                             <h3>score: {rightScore}</h3>
                         </div>
                     </div>
