@@ -1,0 +1,233 @@
+.Settings{
+	display: flex;
+	width: 100%;
+	height: 100%;
+    justify-content: center;
+	overflow: auto;
+}
+
+.content {
+	margin: 5%;
+	width: 90%;
+	height: 1200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* overflow: scroll; */
+    /* @media (max-width: 768px) {
+        width: 95%;
+    } */
+}
+
+.head h1 
+{
+    text-align: center;
+    font-size:50px; font-weight:300; letter-spacing:15px;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+    color: white;
+	@media (max-width: 768px) {
+        font-size:30px;
+        font-weight:100;
+        letter-spacing:4px;
+    }
+}
+
+.last {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    @media (max-width: 1280px) {
+        width: 100%;
+    }
+}
+
+.Tfa {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.TfaStt {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Str {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+        color: #7667D9;
+        font-size: 27px;
+        font-weight: 800;
+        @media (max-width: 1280px) {
+            font-size: 20px;
+        }
+        @media (max-width: 640px) {
+            font-size: 15px;
+        }
+    }
+}
+
+.sttMode {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modeDisplay {
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    button {
+        transition: 'transform 1s ease';
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border-radius: 50px;
+        border: none;
+    }
+    @media (max-width: 1280px) {
+        height: 40px;
+        width: 140px;
+    }
+
+    @media (max-width: 640px) {
+        height: 30px;
+        width: 100px;
+    }
+}
+
+.breaker {
+    width: 50%;
+    height: 100%;
+    background-color: red;
+    border-radius: 50px;
+    position: absolute;
+}
+
+.TfaCode {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media (max-width: 1280px) {
+    .last {
+        flex-direction: column;
+    }
+    .Tfa {
+        width: 100%;
+        height: 50%;
+        flex-direction: row;
+    }
+    .TfaStt, .TfaCode {
+        width: 50%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .Tfa {
+        flex-direction: column;
+    }
+    .TfaStt, .TfaCode {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+.inpCode {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+    input {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        padding-left: 10px;
+        background-color: #7667D9;
+        border: 1px solid black;
+    }
+}
+
+.confInp {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+    button {
+        width: 50%;
+        height: 30%;
+        background-color: #7667D9;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}
+
+.TfaScrn {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1280px) {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+.qrCode {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+.qrGenerate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.Qrlock {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.385);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

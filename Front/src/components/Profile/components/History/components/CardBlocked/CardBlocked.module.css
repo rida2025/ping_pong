@@ -1,0 +1,152 @@
+.CardFriend {
+	display: flex;
+	width: 500px;
+	min-width: 500px;
+	height: 200px;
+	position: relative;
+	border-radius: 10px;
+	overflow: hidden;
+	border: solid 1px #7667D9;
+	.card {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		.First {
+			background-color: #7667D9;
+			width: 100%;
+			height: 50%;
+		}
+		.Last {
+			width: 100%;
+			height: 50%;
+			display: flex;
+			background-color: #25233C;
+			#p2 {
+				color: green;
+				font-size: 15px;
+				left: 60%;
+				top: 30%;
+				position: relative;
+			}
+		}
+		.unblock {
+			width: 30%;
+			height: 50%;
+			background-color: red;
+			position: relative;
+			left: 67%;
+			top: 15%;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+			border: none;
+			p {
+				font-size: 20px;
+			}
+		}
+		.unblock:hover {
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+			transform: translateY(1px);
+		}
+		.unblock:active {
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+			transform: translateY(2px);
+		}
+	}
+	.User {
+		position: absolute;
+		width: 130px;
+		height: 160px;
+		top: 10%;
+		right: 70%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		p {
+			color: #7667D9;
+		}
+	}
+	.image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 130px;
+		height: 130px;
+		border-radius: 130px;
+		background-color: #25233C;
+		img {
+			width: 110px;
+			height: 110px;
+			border-radius: 120px;
+		}
+	}
+	.online {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		background-color: green;
+		border-radius: 20px;
+		border: solid 1px white;
+		top: 8%;
+		left: 70%;
+	}
+}
+@media (max-width: 1024px) {
+	.CardFriend {
+		width: 300px;
+		min-width: 300px;
+		height: 150px;
+		.online {
+			width: 15px;
+			height: 15px;
+			left: 65%;
+		}
+		.card {
+			.unblock {
+				p {
+					font-size: 15px;
+				}
+			}
+		}
+	}
+	.User {
+		width: 100px;
+		height: 20px;
+		left: 0%;
+		.image {
+			width: 90px;
+			height: 90px;
+			img {
+				width: 80px;
+				height: 80px;
+			}
+		}
+		p {
+			font-size: 12px;
+		}
+	}
+}
+
+/* .unblock {
+	width: 30%;
+	height: 50%;
+	background-color: red;
+	position: relative;
+	left: 67%;
+	top: 15%;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	border: none;
+	p {
+		font-size: 20px;
+	}
+}
+.unblock:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+	transform: translateY(1px);
+}
+.unblock:active {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transform: translateY(2px);
+} */

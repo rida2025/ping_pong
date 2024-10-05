@@ -1,0 +1,352 @@
+.Game {
+    padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: #25233C;
+	overflow: auto;
+    background: url('./assets//background.svg');
+    background-size: cover;
+    @media (max-width: 2400px) {
+        background: url('./assets/background.svg') no-repeat center center;
+        background-size: 200vh 200vh;
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 100%;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.content {
+	margin: 3%;
+	width: 90%;
+	height: 1300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    gap: 30px;
+    @media (max-width: 1536px) {
+        width: 100%;
+        margin: 0%;
+    }
+}
+
+.head h1 
+{
+    text-align: center;
+    font-size:50px;
+    font-weight:300;
+    letter-spacing:10px;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+    color: white;
+    @media (max-width: 768px) {
+        font-size:30px;
+        font-weight:100;
+        letter-spacing:4px;
+    }
+}
+
+/* .cards {
+    width: 100%;
+    margin: 2%;
+    height: 70%;
+    display: flex;
+    gap: 3%;
+    justify-content: center;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 100%;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    @media (max-width: 1800px) {
+        flex-wrap: wrap;
+        gap: 8%;
+    }
+    @media (max-width: 1024px) {
+        align-items: center;
+    }
+}
+
+.GameCard {
+    width: 400px;
+    min-width: 400px;
+    height: 800px;
+    min-height: 800px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    &:hover {
+        transition: 0.5s;
+    }
+    @media (max-width: 1800px) {
+        width: 300px;
+        min-width: 300px;
+        height: 700px;
+        min-height: 700px;
+    }
+
+    @media (max-width: 1024px) {
+        width: 150px;
+        min-width: 150px;
+        height: 350px;
+        min-height: 350px;
+    }
+    
+}
+
+.Head {
+    font-size: 25px;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    @media (max-width: 1024px) {
+        font-size: 15px;
+    }
+}
+
+.background {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    filter: brightness(40%);
+    transition: filter 1s ease;
+    border-radius: 30px;
+    overflow: hidden;
+    &:hover {
+        filter: brightness(70%);
+        animation: slide-right 2s forwards;
+    }
+    img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%
+    }
+    cursor: pointer;
+}
+
+._1VS1 {
+    position: absolute;
+    font-size: 30px;
+    color: white;
+    width: 50px;
+    height: 500px;
+} */
+
+.cont {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* background-color: aqua; */
+    padding-top: 20px;
+    width: 90%;
+    height: 100%;
+    gap: 10px;
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.chouseGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.cardGame {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: 700px;
+    /* background-color: azure; */
+    gap: 10px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+    /* background-color: aquamarine; */
+    border-radius: 20px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    filter: brightness(50%);
+    transition: filter 0.5s ease;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover {
+        filter: brightness(70%);
+        animation: slide-right 2s forwards;
+    }
+    img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150%;
+        height: 150%
+    }
+}
+
+.gameName {
+    display: flex;
+    /* background-color: bisque; */
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 25px;
+        font-weight: 1000;
+        color: white;
+        letter-spacing: 2px;
+    }
+}
+
+.pingPong, .TicTac {
+    display: flex;
+    justify-content: center;
+    padding-top: 6%;
+    align-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+    position: relative;
+    flex-wrap: wrap;
+    overflow: hidden;
+    @media (max-width: 768px) {
+        padding-top: 0%;
+    }
+}
+
+.TicTac {
+    gap: 20%;
+}
+
+/* .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    min-width: 350px;
+    overflow: hidden;
+
+} */
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    min-width: 350px;
+    height: 600px;
+    flex-direction: column;
+    @media (max-width: 1280px) {
+        width: 250px;
+        min-width: 250px;
+        height: 500px;
+    }
+    @media (max-width: 768px) {
+        width: 200px;
+        min-width: 200px;
+        height: 400px;
+    }
+}
+
+.cardName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    /* background-color: aquamarine; */
+    p {
+        color: white;
+        font-size: 25px;
+        letter-spacing: 2px;
+
+    }
+}
+
+.Image {
+    display: flex;
+    width: 100%;
+    height: 85%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: brightness(60%);
+    transition: filter 0.5s ease;
+    transition: 0.5s;
+    &:hover {
+        transition: filter 0.5s ease;
+        filter: brightness(90%);
+        animation: slide-right 2s forwards;
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+    img {
+        border: 10px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.arrow {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arrowPosition {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    #Arrow {
+      width: 100%;
+      height: 100%;  
+    }
+}

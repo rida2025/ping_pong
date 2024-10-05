@@ -1,0 +1,16 @@
+.EntirePage {
+  display: flex;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: hidden;
+  /* flex-direction: column; */
+}
+
+.MainContent {
+  width: 100%;
+  height: auto;
+  /* flex-grow: 1; */
+  display: flex;
+  flex-shrink: 1;
+}
+

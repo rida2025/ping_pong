@@ -1,0 +1,72 @@
+.notiCard {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 70px;
+    min-height: 70px;
+    border-radius: 30px;
+    gap: 5%;
+    background-color: rgba(255, 255, 255, 0.2);
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.userimage {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+    }
+}
+
+.Sender {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 25px;
+        color: white;
+        @media (max-width: 1124px) {
+            font-size: 20px;
+        }
+    }
+}
+
+.Icon {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    button {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .Sender {
+        p {
+            font-size: 15px;
+        }
+    }
+    .Icon {
+        width: 25%;
+        gap: 0%;
+    }
+}

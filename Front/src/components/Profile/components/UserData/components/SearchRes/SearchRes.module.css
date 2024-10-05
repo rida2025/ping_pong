@@ -1,0 +1,26 @@
+.searchCard {
+    width: 50%;
+    height: 50px;
+    background-color: #25233c;
+    display: flex;
+    p {
+      width: 100%;
+      font-size: 20px;
+      color: #7667D9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .Simage {
+    width: 80px;
+    background-color: #25233c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+    }
+  }

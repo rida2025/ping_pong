@@ -1,0 +1,577 @@
+.profile{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.content {
+	margin: 3%;
+	width: 90%;
+	height: 1300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.head h1 
+{
+    text-align: center;
+    font-size:50px; font-weight:300; letter-spacing:15px;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+    color: white;
+	@media (max-width: 768px) {
+        font-size:30px;
+        font-weight:100;
+        letter-spacing:4px;
+    }
+}
+
+.last {
+	width: 80%;
+	height: 60%;
+	overflow: auto;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+		height: 100%;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 20px;
+		background-color: #7667D9;
+	}
+	.big {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		gap: 5%;
+		.cont {
+			height: 100%;
+			width: 33%;
+			display: flex;
+			flex-direction: column;
+			border: solid 2px rgba(255, 255, 255, 0.5);
+			.title {
+				width: 100%;
+				height: 10%;
+				background-color: blueviolet;
+				font-size: 30px;
+				color: white;
+				display: flex;
+				padding-left: 5%;
+				align-items: center;
+			}
+			.card {
+		  
+				&::-webkit-scrollbar {
+					width: 10px;
+					height: 100%;
+				}
+		  
+				&::-webkit-scrollbar-thumb {
+					border-radius: 20px;
+					background-color: #7667D9;
+				}
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				padding: 5% 0 0 5%;
+				/* background-color: blanchedalmond; */
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+			}
+		}
+	}
+	.cardMatch {
+		background-color: rgba(0, 128, 0, 0.4);
+		width: 400px;
+		height: 120px;
+		min-height: 150px;
+		border: solid 2px green;
+		border-radius: 20px;
+		display: flex;
+		.player {
+			/* background-color: black; */
+			flex: 1;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			img {
+				padding: 5px;
+				border-radius: 50px;
+				width: 100px;
+				height: 100px;
+			}
+			p {
+				padding: 5px;
+				color: white;
+			}
+		}
+		.scoreDate {
+			flex: 1;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			p {
+				padding: 15px;
+				color: white;
+				font-size: 20px;
+			}
+		}
+	}
+	.cardFriend {
+		background-color: rgba(255, 255, 255, 0.2);
+		width: 350px;
+		height: 120px;
+		min-height: 120px;
+		border: solid 1px white;
+		border-radius: 20px;
+		display: flex;
+		.Img {
+			width: 40%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			img {
+				width: 100px;
+				width: 100px;
+				border-radius: 50px;
+			}
+		}
+		.Name {
+			width: 60%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			p {
+				font-size: 20px;
+				color: white;
+			}
+		}
+		.unblock {
+			width: 30%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			button {
+				background: none;
+				border: none;
+				cursor: pointer;
+				&:hover{
+					p {
+						font-size: 22px;
+						transition: 0.5s;
+					}
+				}
+			}
+			p {
+				transition: 0.5s;
+				color: red;
+				font-size: 20px;
+			}
+		} 
+	}
+	.small {
+		display: none;
+		width: 100%;
+		height: 100%;
+	}
+	@media (max-width: 1280px) {
+		.big {
+			display: none;
+		}
+		.small {
+			display: flex;
+		}
+	}
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+}
+.small {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  .cardName {
+    width: 100%;
+    height: 10%;
+    font-size: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .cardMatch {
+    background-color: #25233c;
+    width: 400px;
+    height: 120px;
+    min-height: 120px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    border: solid 2px green;
+    background-color: rgba(0, 128, 0, 0.3);
+  }
+  .cardFriend {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 300px;
+    height: 100px;
+    min-height: 100px;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: flex;
+    .friendImage {
+      width: 40%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        border-radius: 50px;
+        display: flex;
+        width: 75px;
+        height: 75px;
+      }
+    }
+	.player {
+		width: 30%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		img {
+		  margin: 8px;
+		  width: 75px;
+		  height: 75px;
+		  border-radius: 50px;
+		}
+		p {
+		  font-size: 15px;
+		  color: white;
+		}
+	  }
+	  .scoreDate {
+		width: 40%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		p {
+		  color: white;
+		  font-size: 15px;
+		  padding: 10px;
+		}
+	  }
+    .friendName {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        color: white;
+        font-size: 20px;
+      }
+    }
+    .unblock {
+      width: 30%;
+      height: 100%;
+      overflow: hidden;
+      button {
+        transition: 0.5s;
+        cursor: pointer;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 18px;
+        color: red;
+        &:hover {
+          font-size: 20px;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  @media (max-width: 1280px) {
+		.big {
+			display: none;
+			overflow: auto;
+			
+		}
+		.small {
+			display: flex;
+			flex-direction: column;
+			
+		}
+		.Head {
+			width: 100%;
+			height: 10%;
+			display: flex;
+			gap: 3%;
+		}
+		.cont {
+			width: 100%;
+			height: 90%;
+			display: flex;
+			flex-direction: column;
+			padding: 2%;
+		}
+		.Button {
+			width: 100%;
+			height: 100%;
+			border: solid 2px #7667D9;
+			color: white;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 20px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 10px;
+			transition: 0.5s;
+			&:hover {
+				font-size: 22px;
+				transition: 0.5s;
+			}
+			&::after {
+				background-color: #7667D9;
+			}
+			@media (max-width: 1024px) {
+				font-size: 15px;
+				&:hover {
+					font-size: 17px;
+					transition: 0.5s;
+				}
+			}
+			
+		}  
+		.mHistory {
+			&:hover {
+				overflow-y: scroll;
+			}
+			
+			&::-webkit-scrollbar {
+				width: 10px;
+				height: 100%;
+			}
+			
+			&::-webkit-scrollbar-thumb {
+				border-radius: 20px;
+				background-color: #ffffff0a;
+			}
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			align-content: start;
+			overflow: auto;
+		}
+		.CardMatch {
+			width: 300px;
+			height: 120px;
+			display: flex;
+			background-color: rgba(0, 128, 0, 0.3);
+			border: solid 2px green;
+			border-radius: 20px;
+			.Player {
+				display: flex;
+				flex-direction: column;
+				width: 33%;
+				height: 100%;
+				align-items: center;
+				img {
+					border-radius: 70px;
+					margin-top: 5px;
+					width: 70px;
+					height: 70px;
+				}
+				p {
+					margin-top: 8px;
+					font-size: 12px;
+					color: white;
+				}
+			}
+			.ScoreDate {
+				display: flex;
+				width: 34%;
+				height: 100%;
+				flex-direction: column;
+				align-items: center;
+				gap: 15px;
+				p {
+					font-size: 15px;
+					margin: 8px;
+					color: white;
+				}
+			}
+			@media (max-width: 1136px) {
+				width: 100%;
+			}
+		} 
+		.Friends {
+			&:hover {
+				overflow-y: scroll;
+			}
+			
+			&::-webkit-scrollbar {
+				width: 10px;
+				height: 100%;
+			}
+			
+			&::-webkit-scrollbar-thumb {
+				border-radius: 20px;
+				background-color: #ffffff0a;
+			}
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			overflow: auto;
+			gap: 10px;
+			align-content: start;
+		}
+		.CardFriend {
+			background-color: rgba(255, 255, 255, 0.2);
+			width: 300px;
+			height: 100px;
+			border: solid 2px white;
+			border-radius: 20px;
+			display: flex;
+			.image {
+				width: 40%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				img {
+					width: 70px;
+					height: 70px;
+					margin: 10px;
+					border-radius: 100px;
+				}
+			}
+			.Name {
+				width: 60%;
+				height: 100%;
+				display: flex;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				p {
+					font-size: 15px;
+				}
+			}
+			.unblock {
+				width: 30%;
+				height: 100%;
+				overflow: hidden;
+				button {
+				  transition: 0.5s;
+				  cursor: pointer;
+				  background-color: transparent;
+				  width: 100%;
+				  height: 100%;
+				  border: none;
+				  font-size: 18px;
+				  color: red;
+				  &:hover {
+					font-size: 20px;
+					transition: 0.5s;
+				  }
+				}
+			  }
+		}
+		.Blocked {
+			&:hover {
+				overflow-y: scroll;
+			}
+			
+			&::-webkit-scrollbar {
+				width: 10px;
+				height: 100%;
+			}
+			
+			&::-webkit-scrollbar-thumb {
+				border-radius: 20px;
+				background-color: #ffffff0a;
+			}
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			align-content: start;
+			overflow: auto;
+			gap: 10px;
+		}
+	}
+
+.loading {
+	width: 80%;
+	height: 40%;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+  
+.loading h1 {
+	font-size: 2rem;
+	color: rgba(255, 255, 255, 0.3);
+	margin-bottom: 10px;
+}
+  
+  .pointContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 10px;
+  }
+  
+  .point {
+	width: 10px;
+	height: 10px;
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	animation: blink 1.5s infinite ease-in-out both;
+  }
+  
+  .point:nth-child(2) {
+	animation-delay: 0.3s;
+  }
+  
+  .point:nth-child(3) {
+	animation-delay: 0.6s;
+  }
+  
+  @keyframes blink {
+	0% {
+	  transform: scale(1);
+	  opacity: 0.2;
+	}
+	50% {
+	  transform: scale(1.5);
+	  opacity: 1;
+	}
+	100% {
+	  transform: scale(1);
+	  opacity: 0.2;
+	}
+  }
+  

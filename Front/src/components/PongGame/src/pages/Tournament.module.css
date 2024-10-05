@@ -1,0 +1,17 @@
+.tournament {
+  display: flex;
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  background-color: rgb(49, 4, 79);
+  overflow: hidden;
+}
+
+.content {
+    display: flex ;
+    flex-direction: column;
+    width: 98%;
+    height: 100%;
+    gap: 2rem;
+    align-items: center;
+}

@@ -1,16 +1,21 @@
-.EntirePage {
-  display: flex;
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow: hidden;
-  /* flex-direction: column; */
+body{
+  background:linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.01)),  url('./background.svg') no-repeat center center;
+  background-size: cover;
+
 }
 
-.MainContent {
-  width: 100%;
-  height: auto;
-  /* flex-grow: 1; */
+.EntirePage {
   display: flex;
-  flex-shrink: 1;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Hide overflow if necessary */
+}
+
+/* Main content styles */
+.MainContent {
+  flex-grow: 1; /* Take up remaining space */
+  /* background-color: red; */
+  /* padding: 20px; */
+  /* overflow: auto; */
 }
 

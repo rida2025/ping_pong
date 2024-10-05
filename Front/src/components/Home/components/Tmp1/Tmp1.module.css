@@ -1,0 +1,181 @@
+.tmp1 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.Head {
+    width: 100%;
+    height: 10%;
+    display: flex;
+}
+
+.But {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-left: 1%;
+    gap: 10px;
+    h2 {
+        font-weight: 1000;
+        color: white;
+        letter-spacing: 3px;  
+        @media (max-width: 1280px) {
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.Icon {
+    padding-bottom: 6px;
+    width: 30px;
+    height: 30px;
+    color: gold;
+}
+
+.content {
+    /* background-color: red; */
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.leaderboard {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0% 1% 1% 1%;
+    gap: 10px;
+}
+
+.bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 7%;
+    display: flex;
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 15px;
+        font-weight: 800;
+    }
+    @media (max-width: 1280px) {
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+.cards {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.statistic {
+    width: 65%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+}
+
+.chart1 {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chart2 {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.circ {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.CurveChart {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartCir {
+    width: 270px;
+    height: 270px;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartText{
+    position: absolute;
+    text-align: center;
+    color: white;
+    p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 1536px) {
+    .chartCir {
+        width: 200px;
+        height: 200px;
+    }
+    .chartText {
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    .cont {
+        margin: 0;
+        width: 100%;
+    }
+    .statistic {
+        flex-direction: column;
+    }
+    .chart1 {
+        width: 100%;
+        height: 50%;
+        flex-direction: row;
+    }
+    .chart2 {
+        width: 100%;
+        height: 50%;
+    }
+    .circ {
+        width: 50%;
+        height: 100%;
+    }
+    .CurveChart {
+        width: 50%;
+        height: 100%;
+    }
+}

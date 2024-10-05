@@ -1,57 +1,66 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate} from 'react-router-dom'
-import Sidebar from './components/Sidebar.jsx';
-import Profile from './pages/Profile.jsx';
-import Setting from './pages/Setting.jsx';
-import Home from './pages/Home.jsx';
-import Chat from './pages/Chat.jsx';
-import Achievement from './pages/Achievement.jsx';
-import Notificationz from './pages/Notification.jsx';
-import None from './pages/None.jsx';
-import Login from './Login/Login.jsx';
-import style from './App.module.css'
-import Game from './pages/Game.jsx'
-import LocalGame from './pages/LocalGame.jsx'
-import LocalTeamGame from './pages/LocalTeamGame.jsx'
-import OnlineGame from './pages/OnlineGame.jsx'
-import Tournament from './pages/Tournament.jsx'
-import AuthProvider from './UserContext/Context.jsx';
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import Sidebar from './components/SideBar/Sidebar.jsx';
+import Games from './components/Game/Game.jsx';
 
-import Cookies from 'js-cookie';
+import PingPongGames from './components/Game/components/PingGame/PingGame.jsx';
+import XOGames from './components/Game/components/TicTac/TicTac.jsx';
+
+import Home from './components/Home/Home.jsx';
+import Chat from './Chat/Chat.jsx';
+import Profile from './components/Profile/Profile.jsx';
+import Setting from './components/Setting/Setting.jsx';
+import Notificationz from './components/Notification/Notification.jsx';
+import None from './components/None/None.jsx';
+import LocalGame from './ponggame/localpong/LocalGame.jsx';
+import LocalTeamGame from './ponggame/teampong/LocalTeamGame.jsx';
+import OnlineGame from './ponggame/onlinepong/OnlineGame.jsx';
+import Tournament from './ponggame/Tournamentpong/Tournament.jsx';
+import AuthProvider from './UserContext/Context.jsx';
+import style from './App.module.css';
+
+import Login from './Login/Login.jsx';
+
+import { AuthContext } from './UserContext/Context.jsx';
+
+import ProtectedRoutes from './protectedRoutes.jsx';
+
 function App() {
-  
+  const {islogin, user} = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log('islogin', islogin, 'user', user);
+  }
+  , [islogin]);
   return (
-      <BrowserRouter>
-        <AuthProvider>
+    // <BrowserRouter>
+
       <div className={style.EntirePage}>
-        <div>
-          <Sidebar />
-        </div>
-        <div className={style.MainContent}> 
+        {window.location.pathname !== '/login' && <Sidebar />}
+        <div className={style.MainContent}>
           <Routes>
-            <Route path="/"element={<Home/>}> 
-              <Route path="game"element={<Game />}/>
-              <Route path="localpong"element={<LocalGame />}/>
-              <Route path="localteampong"element={<LocalTeamGame />}/>
-              <Route path="onlinepong"element={<OnlineGame />}/>
-              <Route path="tournament"element={<Tournament />}/>
-              <Route path="chat"element={<Chat/>}/>
-              <Route path="profile"element={<Profile/>}/>
-              <Route path="setting"element={<Setting/>}/>
-              <Route path="achievement"element={<Achievement/>}/>
-              <Route path="notification"element={<Notificationz/>}/>
+            <Route path="/" element={<ProtectedRoutes />} > 
+              <Route path="home" element={<Home />} />
+              <Route path="games" element={<Games />} />
+              <Route path="pingpong-games" element={<PingPongGames />} />
+              <Route path="xo-games" element={<XOGames />} />
+              <Route path="games/localpong" element={<LocalGame />} />
+              <Route path="games/localteampong" element={<LocalTeamGame />} />
+              <Route path="games/onlinepong" element={<OnlineGame />} />
+              <Route path="games/tournament" element={<Tournament />} />
+              <Route path="chat" element={<Chat />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="setting" element={<Setting />} />
+              <Route path="notification" element={<Notificationz />} />
             </Route>
-              <Route path="login"element={
-                Cookies.get('token') ? <Navigate to="/" /> : <Login />
-              }/>
-              <Route path="*"element={<None/>}/>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<None />} />
           </Routes>
         </div>
-       </div>
-        </AuthProvider>
-      </BrowserRouter>
-
+      </div>
+        
+     // </BrowserRouter>
   );
 }
 
-export default App
+export default App;

@@ -1,0 +1,129 @@
+.tmp2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px
+}
+
+.Head {
+    /* background-color: azure; */
+    display: flex;
+    width: 100%;
+    height: 10%;
+    button {
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 1px solid white;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        p {
+            font-size: 17px;
+            color: white;
+            transition: 0.5s;
+        }
+        transition: 0.5s;
+        &:hover {
+            p {
+                font-size: 1rem;
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color: gold;
+    display: flex;
+    position: relative;
+    bottom: 2px;
+}
+
+.cards {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1%;
+    border: solid 1px white;
+}
+
+.statistic {
+    padding: 1%;
+    width: 100%;
+    height: 90%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart1 {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart2 {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.circ {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.CurveChart {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartCir {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartText{
+    position: absolute;
+    text-align: center;
+    color: white;
+    p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .chartCir {
+        width: 130px;
+        height: 130px;
+    }
+    .chartText {
+        p{
+            font-size: 12px;
+        }
+    }
+}

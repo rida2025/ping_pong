@@ -1,0 +1,365 @@
+.Home{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.cont {
+    margin: 3%;
+	width: 80%;
+	height: 1200px;
+	display: flex;
+	flex-direction: column;
+    /* background-color: aqua; */
+    @media (max-width: 1280px) {
+        width: 100%;
+    }
+}
+
+.head h1
+{
+    text-align: center;
+    font-size:50px; font-weight:300; letter-spacing:15px;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+    color: white;
+    @media (max-width: 768px) {
+        font-size:30px;
+        font-weight:100;
+        letter-spacing:4px;
+    }
+}
+
+.search {
+    width: 80;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.extFrame {
+    width: 80%;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    @media (max-width: 768px) {
+        height: 35px;
+    }
+}
+
+
+.innerFrame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        width: 100%;
+        height: 100%;
+        background: none;
+        display: block;
+        border-radius: 30px;
+        padding-left: 20px;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.searchBut {
+    display: flex;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(132, 0, 255);
+    border-radius: 50px;
+    right: -5px;
+    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.searchResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 300px;
+    top: 80%;
+    left: 11%;
+    z-index: 1;
+    background-color: #660da5;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 0 0 10px 10px;
+    @media (max-width: 640px) {
+        width: 80%;
+    }
+}
+
+.searchCard {
+    width: 210px;
+    height: 60px;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+}
+
+.userImage {
+    display: flex;
+    width: 70px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 55px;
+        height: 55px;
+        border-radius: 60px;
+    }
+}
+
+.userName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 100%;
+    p {
+        font-size: 16px;
+        font-weight: 800;
+        color: white;
+    }
+}
+
+.first {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    position: relative;
+}
+
+.intro {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    p {
+        padding: 5%;
+        font-size: 25px;
+        color: white;
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+}
+
+
+.play {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        background-color: #660da5;
+        width: 50%;
+        height: 30%;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        p {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+            letter-spacing: 4px;
+        }
+        &:hover {
+            transform: scale(1.05);
+            background-color: #441764;
+        }
+        @media (max-width: 1536px) {
+            width: 80%;
+        }
+        @media (max-width: 640px) {
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .first {
+        flex-direction: column;
+    }
+    .intro{
+        padding: 6%;
+        width: 100%;
+        height: 50%;
+    }
+    .play {
+        width: 100%;
+        height: 50%;
+        button {
+            height: 50%;
+        }
+    }
+    .searchBut {
+        height: 35px;
+        width: 35px;
+    }
+    .innerFrame {
+        input {
+            font-size: 15px;
+        }
+    }
+    .intro {
+        p {
+            font-size: 20px;
+        }
+    }
+}
+
+.last {
+    width: 100%;
+    height: 60%;
+    display: flex;
+}
+
+.tmp2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px
+}
+
+.Head {
+    /* background-color: azure; */
+    display: flex;
+    width: 100%;
+    height: 10%;
+    button {
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 1px solid white;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        p {
+            font-size: 17px;
+            color: white;
+        }
+    }
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color: gold;
+    display: flex;
+    position: relative;
+    bottom: 2px;
+}
+
+.cards {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1%;
+    border: solid 1px white;
+}
+
+.statistic {
+    padding: 1%;
+    width: 100%;
+    height: 90%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart1 {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart2 {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.circ {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.CurveChart {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartCir {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartText{
+    position: absolute;
+    text-align: center;
+    color: white;
+    p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .chartCir {
+        width: 130px;
+        height: 130px;
+    }
+    .chartText {
+        p{
+            font-size: 12px;
+        }
+    }
+}
+
