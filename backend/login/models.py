@@ -24,6 +24,7 @@ class Player(AbstractUser):
     two_factor = models.BooleanField(default=False)
     otp = models.CharField(max_length=6, default='000000')
     otp_verified = models.BooleanField(default=False)
+    is_login = models.BooleanField(default=False)
    
 
 

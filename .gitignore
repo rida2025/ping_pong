@@ -1,6 +1,7 @@
 Front/node_modules
 Back/testwin
 Back/cc
-Back/venv
+Back/strong_backend
+strong_backend
 node_modules
 .env

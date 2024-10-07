@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 from login import views
 from rest_framework_simplejwt.views import TokenRefreshView ,TokenObtainPairView, TokenVerifyView
+from pongame.views import game_state_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/game-state/<str:room_name>/', game_state_view, name='game_state_view'),
     # path('api/matches/', views.Matches_list),
     # path('api/user/<str:username>/', views.Matches_by_user),
     path('api/', include('login.urls')),

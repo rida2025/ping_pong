@@ -59,6 +59,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
             two_factor=False,
             otp='000000',
             otp_verified=False,
+            is_login=True
         )
         user.avatar = user_data['avatar']
         user.cover = user_data['avatar']
@@ -142,7 +143,6 @@ class PlayerViewSet(viewsets.ModelViewSet):
                 value=tokens['access'],
                 httponly=True,
                 secure=True,
-                samesite='Lax'
             )
             return response
         except requests.RequestException as e:
