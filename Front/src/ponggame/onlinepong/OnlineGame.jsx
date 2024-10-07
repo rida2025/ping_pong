@@ -3,27 +3,6 @@ import * as styles from './OnlineGame.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/Context';
 
-// function getOrCreateName() {
-//     const storedName = localStorage.getItem('username');
-    
-//     if (storedName) {
-//         return storedName;
-//     } else {
-//         const newName = generateRandomName();
-//         localStorage.setItem('username', newName);
-//         return newName;
-//     }
-// }
-
-// function generateRandomName() {
-//     const firstNames = ["Mohammed", "Reda", "Hassan", "Bilal", "Khalid", "Nour", "Eddine"];
-//     const lastNames = ["Jirari", "Jirari","Sobane", "Eddinaoui", "Bouychou", "Ouahidi", "Ouahidi"];
-    
-//     const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-//     const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-//     return `${randomFirstName}${randomLastName}`;
-// }
-
 export default function  OnlineGame() {
 
     const {user} = useContext(AuthContext);
@@ -41,10 +20,52 @@ export default function  OnlineGame() {
     const [ MESSAGE, setMessage ] = useState("message");
     const [ username, setUsername ] = useState(user.user.username);
     const [ avatar, setAvatar ] = useState(user.user.avatar);
+    let socket = null;
+
+    const leftup = () => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            const message = {
+                action: 'w',
+                value: 10,
+            };
+            socket.send(JSON.stringify(message));
+        }
+    };
+
+    const leftdown = () => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            const message = {
+                action: 's',
+                value: 10,
+            };
+            socket.send(JSON.stringify(message));
+        }
+    };
+
+    const rightup = () => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            const message = {
+                action: 'ArrowUp',
+                value: 10,
+            };
+            socket.send(JSON.stringify(message));
+        }
+    };
+
+    const rightdown = () => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            const message = {
+                action: 'ArrowDown',
+                value: 10,
+            };
+            socket.send(JSON.stringify(message));
+        }
+    };
 
     useEffect(() => {
         const username = user.user.username;
         const avatar = user.user.avatar;
+        const level = user.user.level / 100;
         setLeftPlayerName(username);
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -59,11 +80,10 @@ export default function  OnlineGame() {
         let rightRacketY = 0;
         let player_id = 0;
         let myReq;
-        let pause = 0;
-        let socket = new WebSocket(`ws://10.13.4.4:8000/ws/socket-server/`);
+        socket = new WebSocket(`ws://10.13.10.11:8000/ws/socket-server/`);
 
         socket.onopen = () => {
-            console.log('my name is:', username, "my avatar is:", avatar);
+            // console.log('my name is:', username, "my avatar is:", avatar);
             if (socket.readyState === WebSocket.OPEN) {
                 const message = {
                     action: 'connect',
@@ -77,6 +97,11 @@ export default function  OnlineGame() {
                 console.error('WebSocket is not open. readyState:', socket.readyState);
             }
         };
+    
+        window.leftup = leftup;
+        window.leftdown = leftdown;
+        window.rightup = rightup;
+        window.rightdown = rightdown;
     
         socket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
@@ -208,15 +233,6 @@ export default function  OnlineGame() {
             drawball();
             drawLeftRacket();
             drawRightRacket();
-            if (socket && socket.readyState === WebSocket.OPEN) {
-                if (pause === 0) {
-                    const message = {
-                        action: 'state',
-                        value: 1,
-                    };
-                    socket.send(JSON.stringify(message));
-                }
-            }
             const currentPath = window.location.pathname;
             if (currentPath === '/games/onlinepong' && condition === 'N')
                 return requestAnimationFrame(draw);
@@ -240,6 +256,10 @@ export default function  OnlineGame() {
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
             cancelAnimationFrame(myReq);
+
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.close(); // Close WebSocket when the component unmounts
+            }
         };
     }, []);
 
@@ -289,8 +309,12 @@ export default function  OnlineGame() {
                     <div className={styles.holderx} style={{height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         <div className={styles.message}>
                             <h4>{MESSAGE}</h4>
-                            <img src={avatar}/>
-                            <h3>{username}</h3>
+                            {condition !== 'D' && (
+                                <>
+                                    <img src={avatar}/>
+                                    <h3>{username}</h3>
+                                </>
+                            )}
                         </div>
                         <div className={styles.buttoncontainer}>
                         <div className={styles.Button}>

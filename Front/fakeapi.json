@@ -9,7 +9,7 @@
         "wins": 15,
         "losses": 9,
         "percentage": 5,
-        "image": "http://10.13.4.4:8000/media/user_images/nouahidi_HHzXjui.jpeg",
+        "image": "http://10.13.10.11:8000/media/user_images/nouahidi_HHzXjui.jpeg",
         "xp": 2000,
         "online": 0
     },
@@ -23,7 +23,7 @@
         "wins": 25,
         "losses": 5,
         "percentage": 5,
-        "image": "http://10.13.4.4:8000/media/user_images/th.jpeg",
+        "image": "http://10.13.10.11:8000/media/user_images/th.jpeg",
         "xp": 1,
         "online": 1
     },
@@ -37,7 +37,7 @@
         "wins": 40,
         "losses": 10,
         "percentage": 5,
-        "image": "http://10.13.4.4:8000/media/user_images/Screen_Shot_2024-07-02_at_12.25.17_PM_HPd95ZH.png",
+        "image": "http://10.13.10.11:8000/media/user_images/Screen_Shot_2024-07-02_at_12.25.17_PM_HPd95ZH.png",
         "xp": 1,
         "online": 1
     },
@@ -79,7 +79,7 @@
         "wins": 0,
         "losses": 50,
         "percentage": 0,
-        "image": "http://10.13.4.4:8000/media/user_images/Screen_Shot_2024-07-02_at_12.25.17_PM_sfqZXWL.png",
+        "image": "http://10.13.10.11:8000/media/user_images/Screen_Shot_2024-07-02_at_12.25.17_PM_sfqZXWL.png",
         "xp": 1,
         "online": 1
     }

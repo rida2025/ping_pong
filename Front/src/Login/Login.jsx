@@ -10,7 +10,6 @@ import { AuthContext } from "../UserContext/Context";
 // const Login = () => {
 const PongParadise = () => {
   const backgroundimage = '/img/loginbg.jpg'; // For public assets
-  const logo = '/img/42logo.png'; // For public assets
   const {url , auth_intra42 } = useContext(AuthContext);
   // const location = useLocation();
   // const navigate = useNavigate();
@@ -36,8 +35,7 @@ const PongParadise = () => {
         </p>
         <div className="pong-paradise-logo">
           <a href={url}>
-            {/* <img src="/img/42logo.png" alt="pong paradise" /> */}
-            <img src={logo} alt="pong paradise" />
+            <img src="/img/42logo.png" alt="pong paradise" />
           </a>
         </div>
       </div>

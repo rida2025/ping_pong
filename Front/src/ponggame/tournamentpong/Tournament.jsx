@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import styles from './Tournament.module.css'
 import StartTournament from './components/StartTournament.jsx'
 import { ContextProvider } from './context/TournamentContext.jsx';
 

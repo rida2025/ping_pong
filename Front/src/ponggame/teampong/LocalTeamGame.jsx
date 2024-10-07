@@ -253,14 +253,14 @@ export default function LocalGame() {
             <div className={styles.gameContainer}>
                 <div className={styles.topgame}>
                     <div className={styles.player}>
-                        <img src="assets/superior.png" className={styles.userImg}/>
+                        <img src="/assets/superior.png" className={styles.userImg}/>
                         <div className={styles.playerInfo}>
                             <h2>Left Team</h2>
                             <h3>score: {leftScore}</h3>
                         </div>
                     </div>
                     <div className={styles.player}>
-                        <img src="assets/battlebeast.png" className={styles.userImg}/>
+                        <img src="/assets/battlebeast.png" className={styles.userImg}/>
                         <div className={styles.playerInfo}>
                             <h2>Right Team</h2>
                             <h3>score: {rightScore}</h3>

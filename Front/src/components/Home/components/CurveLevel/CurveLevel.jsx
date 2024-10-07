@@ -1,10 +1,11 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend, Ticks } from 'chart.js';
+import { Chart as ChartJS, Filler, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend, Ticks } from 'chart.js';
 import styl from './CurveLevel.module.css';
 import { BsBack } from 'react-icons/bs';
 import { color } from 'chart.js/helpers';
 
+// Registering all necessary plugins, including Filler
 ChartJS.register(
   LineElement,
   CategoryScale,
@@ -12,7 +13,8 @@ ChartJS.register(
   PointElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler // Register Filler to enable the fill option
 );
 
 const CurveLevel = ({ data }) => {

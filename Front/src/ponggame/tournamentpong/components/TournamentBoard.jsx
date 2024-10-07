@@ -12,7 +12,7 @@ const TournamentBoard = () => {
             <div className={styles.gameCard}>
                 <div className={styles.player}>
                     <div className={styles.userImage}>
-                        <img src="assets/battlebeast.png"/>
+                        <img src="/assets/battlebeast.png"/>
                     </div>
                     <div className={styles.userName}>
                         <p > {player1Name} </p>
@@ -23,7 +23,7 @@ const TournamentBoard = () => {
                 </div>
                 <div className={styles.player}>
                     <div className={styles.userImage}>
-                        <img src="assets/homelander.png"/>
+                        <img src="/assets/homelander.png"/>
                     </div>
                     <div className={styles.userName}>
                         <p > {player2Name} </p>
@@ -33,7 +33,7 @@ const TournamentBoard = () => {
             <div className={styles.gameCard}>
                 <div className={styles.player}>
                     <div className={styles.userImage}>
-                        <img src="assets/superman.png"/>
+                        <img src="/assets/superman.png"/>
                     </div>
                     <div className={styles.userName}>
                         <p > {player3Name} </p>
@@ -44,7 +44,7 @@ const TournamentBoard = () => {
                 </div>
                 <div className={styles.player}>
                     <div className={styles.userImage}>
-                        <img src="assets/superior.png"/>
+                        <img src="/assets/superior.png"/>
                     </div>
                     <div className={styles.userName}>
                         <p > {player4Name} </p>

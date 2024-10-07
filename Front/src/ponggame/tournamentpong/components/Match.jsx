@@ -5,9 +5,9 @@ import { useGlobalContext } from '../context/TournamentContext.jsx';
 export default function GameComponent({ type }) {
 
     const [leftplayer, setleftplayer] = useState("left player");
-    const [leftAvatar, setLeftAvatar] = useState("assets/unknown.png");
+    const [leftAvatar, setLeftAvatar] = useState("/assets/unknown.png");
     const [rightplayer, setrightplayer] = useState("right player");
-    const [rightAvatar, setRightAvatar] = useState("assets/unknown.png");
+    const [rightAvatar, setRightAvatar] = useState("/assets/unknown.png");
     const { player1Name, player2Name, player3Name, player4Name, player5Name,setPlayer5Name, player6Name,setPlayer6Name,setPlayer7Name,setGameStatus,setPlayer5Avatar, setPlayer6Avatar, setPlayer7Avatar, player5Avatar, player6Avatar} = useGlobalContext();
 
     const pressedKeys = useRef(new Set());
@@ -16,15 +16,15 @@ export default function GameComponent({ type }) {
     useEffect(() => {
         if (type === "left"){
             setleftplayer(player1Name);
-            setLeftAvatar("assets/battlebeast.png");
+            setLeftAvatar("/assets/battlebeast.png");
             setrightplayer(player2Name);
-            setRightAvatar("assets/homelander.png");
+            setRightAvatar("/assets/homelander.png");
         }
         else if (type === "right"){
             setleftplayer(player3Name);
-            setLeftAvatar("assets/superman.png");
+            setLeftAvatar("/assets/superman.png");
             setrightplayer(player4Name);
-            setRightAvatar("assets/superior.png");
+            setRightAvatar("/assets/superior.png");
         }
         else if (type === "final"){
             setleftplayer(player5Name);
@@ -130,15 +130,15 @@ export default function GameComponent({ type }) {
                     mycondition = 'S';
                     if (type === "left"){
                         setPlayer5Name(player1Name);
-                        setPlayer5Avatar("assets/battlebeast.png");
+                        setPlayer5Avatar("/assets/battlebeast.png");
                     }
                     else if (type === "right"){
                         setPlayer6Name(player3Name);
-                        setPlayer6Avatar("assets/superman.png");
+                        setPlayer6Avatar("/assets/superman.png");
                     }
                     else if (type === "final"){
                         setPlayer7Name(player5Name);
-                        setPlayer7Avatar("assets/battlebeast.png");
+                        setPlayer7Avatar("/assets/battlebeast.png");
                     }
                     setGameStatus(false);
                 }
@@ -154,15 +154,15 @@ export default function GameComponent({ type }) {
                     mycondition = 'S';
                     if (type === "left"){
                         setPlayer5Name(player2Name);
-                        setPlayer5Avatar("assets/homelander.png");
+                        setPlayer5Avatar("/assets/homelander.png");
                     }
                     else if (type === "right"){
                         setPlayer6Name(player4Name);
-                        setPlayer6Avatar("assets/superior.png");
+                        setPlayer6Avatar("/assets/superior.png");
                     }
                     else if (type === "final"){
                         setPlayer7Name(player6Name);
-                        setPlayer7Avatar("assets/superior.png");
+                        setPlayer7Avatar("/assets/superior.png");
                     }
                     setGameStatus(false);
                 }

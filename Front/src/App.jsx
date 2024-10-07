@@ -24,6 +24,7 @@ import Login from './Login/Login.jsx';
 import { AuthContext } from './UserContext/Context.jsx';
 
 import ProtectedRoutes from './protectedRoutes.jsx';
+import jsCookie from 'js-cookie';
 
 function App() {
   const {islogin, user} = useContext(AuthContext);
@@ -31,7 +32,7 @@ function App() {
   useEffect(() => {
     console.log('islogin', islogin, 'user', user);
   }
-  , [islogin]);
+  , );
   return (
     // <BrowserRouter>
 

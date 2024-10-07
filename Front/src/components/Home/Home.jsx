@@ -12,7 +12,7 @@ const Home = () => {
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const handleClick = () => {
-        navigate('/game');
+        navigate('/games');
     }
 
     const handleResize = () => {
