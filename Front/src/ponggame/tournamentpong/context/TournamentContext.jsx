@@ -16,7 +16,6 @@ export const ContextProvider = ({ children }) => {
   const [player7Name, setPlayer7Name] = useState('Unknown');
   const [player7Avatar, setPlayer7Avatar] = useState('/assets/unknown.png');
 
-
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
   const [player3Score, setPlayer3Score] = useState(0);

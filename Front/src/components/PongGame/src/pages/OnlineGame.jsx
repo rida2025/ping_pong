@@ -66,7 +66,7 @@ export default function  OnlineGame() {
         let player_id = 0;
         let myReq;
         let pause = 0;
-        let socket = new WebSocket(`ws://10.13.10.11:8000/ws/socket-server/`);
+        let socket = new WebSocket(`ws://10.11.10.12:8000/ws/socket-server/`);
 
         socket.onopen = () => {
             console.log('my name is:', username, "my avatar is:", avatar);

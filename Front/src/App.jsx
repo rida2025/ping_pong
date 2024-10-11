@@ -17,6 +17,7 @@ import LocalTeamGame from './ponggame/teampong/LocalTeamGame.jsx';
 import OnlineGame from './ponggame/onlinepong/OnlineGame.jsx';
 import Tournament from './ponggame/Tournamentpong/Tournament.jsx';
 import AuthProvider from './UserContext/Context.jsx';
+import AiGame from './ponggame/aipong/AiPong.jsx';
 import style from './App.module.css';
 
 import Login from './Login/Login.jsx';
@@ -46,6 +47,7 @@ function App() {
               <Route path="pingpong-games" element={<PingPongGames />} />
               <Route path="xo-games" element={<XOGames />} />
               <Route path="games/localpong" element={<LocalGame />} />
+              <Route path="games/aipong" element={<AiGame />} />
               <Route path="games/localteampong" element={<LocalTeamGame />} />
               <Route path="games/onlinepong" element={<OnlineGame />} />
               <Route path="games/tournament" element={<Tournament />} />

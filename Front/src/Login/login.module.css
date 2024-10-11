@@ -1,97 +1,178 @@
-
-@keyframes losgin {
-	0%
-	{
-		transform: scale(0.5);
-	}
-	50%
-	{
-		transform: scale(1.2);
-		
-	}
-	100%
-	{
-		transform: scale(0.5);
-	}
+.usercard
+{
+	width: 350px;
+	height: 350px;
+	margin: 50px auto;
+  position: relative;
+	background: #fff;
+	overflow: hidden;
+	box-shadow:         0 1px 3px 0 rgba(0,0,0,0.08);
+	-moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,0.08);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+  border-radius:         5px;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
 }
 
-.all {
-
-		width: 100%;
-		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-image: url("/img/bagrou1.webp");
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		.log{
-			backdrop-filter: blur(12px);
-
-			/* background-color: #7667D9; */
-			width: 60%;
-			height: 50%;
-			border: 2px white solid;
-			border-radius: 40px;
-			transition: .5s;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-items: center;
-			overflow: scroll;
-			scrollbar-width: none;
-			padding: 50px;
-			gap: 50px;
-			box-shadow: 0 4px 100px 0 #7667d9, 0 6px 20px 0 #7667d9;
-
-
-				.welcom {
-					color: white;
-					font-size: 40px;
-					margin: 30px;
-					display: flex;
-					text-align: center;
-					align-items: center;
-					justify-content: center;
-					font-size: 100px;
-					font-weight: 700;
-					/* font-weight: normal; */
-
-				}
-				.explication {
-					display: flex;
-					text-align: center;
-					align-items: center;
-					color: white;
-					font-size: 50px;
-					margin-left: 30px;
-					margin-right: 30px;
-					font-weight: 200;
-
-				}
-
-				img {
-					animation: losgin 3s linear 5ms infinite;
-					width: 100px;
-					margin-top: 30px;
-					transition: .5s;
-					cursor: pointer;
-					
-					
-				}
-				img:hover {
-					animation: losgin  none;
-					width: 200px;
-					transition: .5s;
-				}
-				&::-webkit-scrollbar {
-					display: none;
-				}
-		}
-
-
+input
+{
+	width: 100%;
+	height: 40px;
+	border-radius:         3px;
+	-moz-border-radius:    3px;
+	-webkit-border-radius: 3px;
+	border: 1px solid #dee3e4;
+	padding: 3px 12px;
+	margin: 6px 0;
 }
 
+input:focus
+{
+	outline: none;
+	border: 1px solid #03b3b5;
+	transition:         all .5s ease-in-out;
+	-o-transition:      all .5s ease-in-out;
+	-moz-transition:    all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+}
 
+.loginbox,
+.signupbox
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	background: #fff;
+  border-radius:         5px;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+}
+
+.loginbox{
+	padding: 20px 40px;
+	right: 0px;
+}
+
+.signupbox{
+	padding: 40px;
+}
+
+.login, .signup
+{
+	text-align: center;
+	color: #fff;
+	background: #03b3b5;
+	line-height: 30px;
+	opacity: 0.95;
+  cursor: pointer
+}
+
+.login:hover{opacity: 1}
+
+.or
+{
+	display: block;
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px solid #dee3e4;
+	position: relative;
+	margin: 20px 0;
+}
+
+.or:before
+{
+	content: 'or';
+	width: 40px;
+	height: 18px;
+	position: absolute;
+	top: -5px;
+	right: calc(50% - 20px);
+	background-color: #fff;
+	text-align: center;
+	line-height: 10px;
+	color: #555
+}
+
+.loginwithintra,
+.loginwithgoogle
+{
+	width: 100%;
+	display: block;
+	margin: 15px 0;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	opacity: .95;
+  border-radius:         3px;
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+}
+
+.loginwithintra:hover,
+.loginwithgoogle:hover
+{
+	opacity: 1;
+}
+
+.loginwithintra
+{
+	background: #212935
+}
+
+.loginwithgoogle
+{
+	background: #DB4A37;
+}
+
+.loginwithintra .icon,
+.loginwithgoogle .icon
+{
+	float: left;
+	font-size: 21px;
+	width: 50px;
+	height: 26px;
+	margin: 7px;
+	padding: 2px;
+	text-align: center;
+	border-right: 1px solid #fff;
+}
+
+/**** footer *****/
+
+.usercard .footer
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	color: #666;
+	font-size: 13px;
+	font-family: sans-serif;
+}
+
+.footer a
+{
+	color: #03b3b5;
+}
+
+@keyframes heart{
+  0%{
+    transform:         scale(1, 1);
+    -ms-transform:     scale(1, 1);
+    -webkit-transform: scale(1, 1);
+  }
+  50%{
+    transform:         scale(1.5, 1.5);
+    -ms-transform:     scale(1.5, 1.5);
+    -webkit-transform: scale(1.5, 1.5);
+  }
+  100%{
+    transform:         scale(1, 1);
+    -ms-transform:     scale(1, 1);
+    -webkit-transform: scale(1, 1);
+  }
+}

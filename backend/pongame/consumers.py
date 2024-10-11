@@ -72,6 +72,7 @@ class GameConsumer(AsyncWebsocketConsumer):
                 self.room_group_name,
                 self.channel_name
             )
+            GameStateManager.remove_state(self.room_group_name)
         else:
             self.close()
         if self.name in GameConsumer.queue:
@@ -219,7 +220,6 @@ class GameConsumer(AsyncWebsocketConsumer):
             'ball_radius': 15,
         }
 
-        GameStateManager.set_state(self.room_group_name, data)
 
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -228,7 +228,18 @@ class GameConsumer(AsyncWebsocketConsumer):
                 'message': data
             }
         )
-        await asyncio.sleep(1/60)
+        packet = {
+            'message': 'game_data',
+            'ballx': self.ballx,
+            'bally': self.bally,
+            'right_paddleY': self.right_paddleY,
+            'left_paddleY': self.left_paddleY,
+            'right_score': self.right_score,
+            'left_score': self.left_score,
+            'game_width': self.game_width,
+            'game_height': self.game_height,
+        }
+        GameStateManager.set_state(self.room_group_name, packet)
     
     async def game_data(self, event):
         data = event['message']
@@ -242,7 +253,11 @@ class GameConsumer(AsyncWebsocketConsumer):
 
     async def run_60_times_per_second(self):
         while self.game_loop:
+            start_time = time.time()
             await self.gamelogic()
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"gamelogic() execution time: {execution_time:.6f} seconds")
             await asyncio.sleep(1/60)
     
     async def gamelogic(self):
@@ -284,7 +299,7 @@ class GameConsumer(AsyncWebsocketConsumer):
             self.balldirectionY = random.uniform(-1, 1)
             self.right_score += 1
             self.bonus = 0
-            if (self.right_score == 3000):
+            if (self.right_score >= 1000):
                 self.game_loop = False
                 data = {
                     'winner': '2',
@@ -299,6 +314,9 @@ class GameConsumer(AsyncWebsocketConsumer):
                         'message': data
                     }
                 )
+
+                GameStateManager.remove_state(group_name)
+
                 values = list(self.game.values())
 
                 first_element = values[0]
@@ -334,7 +352,7 @@ class GameConsumer(AsyncWebsocketConsumer):
             self.balldirectionY = random.uniform(-1, 1)
             self.left_score += 1
             self.bonus = 0
-            if (self.left_score == 3000):
+            if (self.left_score >= 1000):
                 self.game_loop = False
                 data = {
                     'winner': '1',
@@ -348,6 +366,9 @@ class GameConsumer(AsyncWebsocketConsumer):
                     'type': 'game_data',
                     'message': data
                 })
+
+                GameStateManager.remove_state(group_name)
+
                 values = list(self.game.values())
 
                 first_element = values[0]

@@ -1,19 +1,15 @@
 import React, {useRef, useEffect, useState, useContext } from 'react';
-import * as styles from './OnlineGame.module.css';
+import * as styles from './AiPong.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/Context';
 
-export default function  OnlineGame() {
+export default function  AiGame() {
 
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const pressedKeys = useRef(new Set());
     const [ rightScore, setRightScore ] = useState(0);
-    const [ leftplayername, setLeftPlayerName ] = useState("left player");
-    const [ rightplayername, setRightPlayerName ] = useState("right player");
-    const [ leftplayeravatar, setLeftPlayerAvatar ] = useState(user.user.avatar);
-    const [ rightplayeravatar, setRightPlayerAvatar ] = useState("/assets/unknown0.png");
     const [ leftScore, setLeftScore ] = useState(0);
     const [ gamestarted, setGameStarted ] = useState(false);
     const [ condition, setCondition ] = useState('N');
@@ -65,8 +61,6 @@ export default function  OnlineGame() {
     useEffect(() => {
         const username = user.user.username;
         const avatar = user.user.avatar;
-        const level = user.user.level / 100;
-        setLeftPlayerName(username);
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const game_width = 800;
@@ -78,18 +72,14 @@ export default function  OnlineGame() {
         let racketWidth = 0;
         let leftRacketY = 0;
         let rightRacketY = 0;
-        let player_id = 0;
         let myReq;
-        socket = new WebSocket(`ws://10.11.10.12:8000/ws/socket-server/`);
+        socket = new WebSocket(`ws://10.11.10.12:8000/ws/ai-game/`);
 
         socket.onopen = () => {
             // console.log('my name is:', username, "my avatar is:", avatar);
             if (socket.readyState === WebSocket.OPEN) {
                 const message = {
                     action: 'connect',
-                    username: username,
-                    avatar: avatar,
-                    level: 1,
                 };
                 socket.send(JSON.stringify(message));
                 console.log('WebSocket is open now');
@@ -121,20 +111,6 @@ export default function  OnlineGame() {
                 }
                 if (data.message){
                     if (data.message === 'game_started'){
-                        if (data.player_id1 === username){
-                            player_id = 1;
-                            setLeftPlayerName(data.player_id1);
-                            setRightPlayerName(data.player_id2);
-                            setLeftPlayerAvatar(data.player_1_avatar);
-                            setRightPlayerAvatar(data.player_2_avatar);
-                        }
-                        else if (data.player_id2 === username){
-                            player_id = 2;
-                            setLeftPlayerName(data.player_id1);
-                            setRightPlayerName(data.player_id2);
-                            setLeftPlayerAvatar(data.player_1_avatar);
-                            setRightPlayerAvatar(data.player_2_avatar);
-                        }
                         setGameStarted(true);
                     }
                     else if (data.message === 'disconnected'){
@@ -175,6 +151,7 @@ export default function  OnlineGame() {
             ctx.arc(ballx, bally, ball_radius, 0, Math.PI * 2);
             ctx.fillRect(canvas.clientWidth / 2-3,0, 6, canvas.height);
             ctx.fill();
+            console.log("ballx", ballx, "bally", bally, "ball_radius", ball_radius);
         };
 
         const drawLeftRacket = () => {
@@ -193,26 +170,7 @@ export default function  OnlineGame() {
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (pressedKeys.current.has('w') && player_id === 1) {
-                if (socket && socket.readyState === WebSocket.OPEN) {
-                    const message = {
-                        action: 'w',
-                        value: 10,
-                    };
-                    socket.send(JSON.stringify(message));
-                }
-            }
-            else if (pressedKeys.current.has('s') && player_id === 1) {
-                if (socket && socket.readyState === WebSocket.OPEN) {
-                    const message = {
-                        action: 's',
-                        value: 10,
-                    };
-                    socket.send(JSON.stringify(message));
-                }
-            }
-            if (pressedKeys.current.has('ArrowUp') && player_id === 2) {
+            if (pressedKeys.current.has('ArrowUp')) {
                 if (socket && socket.readyState === WebSocket.OPEN) {
                     const message = {
                         action: 'ArrowUp',
@@ -221,7 +179,7 @@ export default function  OnlineGame() {
                     socket.send(JSON.stringify(message));
                 }
             }
-            else if (pressedKeys.current.has('ArrowDown') && player_id === 2) {
+            else if (pressedKeys.current.has('ArrowDown')) {
                 if (socket && socket.readyState === WebSocket.OPEN) {
                     const message = {
                         action: 'ArrowDown',
@@ -234,7 +192,7 @@ export default function  OnlineGame() {
             drawLeftRacket();
             drawRightRacket();
             const currentPath = window.location.pathname;
-            if (currentPath === '/games/onlinepong' && condition === 'N')
+            if (currentPath === '/games/aipong' && condition === 'N')
                 return requestAnimationFrame(draw);
             else
                 return cancelAnimationFrame(myReq);
@@ -266,7 +224,6 @@ export default function  OnlineGame() {
     useEffect(() => {
         console.log("gamestarted", gamestarted);
         if (gamestarted){
-            document.getElementById('matchmaking').style.display = "none";
             document.getElementById('result').style.display = "none";
         }
         if (condition != 'N'){
@@ -280,30 +237,6 @@ export default function  OnlineGame() {
 
     return (
         <>
-            <div id="matchmaking" className={styles.matchmaking}>
-                <div className={styles.centered}>
-                    <div className={styles.holderx}>
-                        <div className={styles.leftplayer}>
-                            <img src={leftplayeravatar} className={styles.userImg}/>
-                            <h4>{leftplayername}</h4>
-                        </div>
-                        <div className={styles.vs}>
-                            <img src="/assets/loading.gif" className={styles.loadingGif}/>
-                            <p>VS</p>
-                        </div>
-                        <div className={styles.leftplayer}>
-                            <img src={rightplayeravatar} className={styles.userImg}/>
-                            <h4>Unknown</h4>
-                        </div>
-                    </div>
-                    <div className={styles.buttoncontainer}>
-                        <div className={styles.Button}>
-                            <button onClick={handleExitClick}>Exit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="result" className={styles.result}>
                 <div className={styles.centered}>
                     <div className={styles.holderx} style={{height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
@@ -328,16 +261,16 @@ export default function  OnlineGame() {
             <div className={styles.gameContainer}>
                 <div className={styles.topgame}>
                     <div className={styles.player}>
-                        <img src={leftplayeravatar} className={styles.userImg}/>
+                        <img src="/assets/unknown.png" className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>{leftplayername}</h2>
+                            <h2>Ai Player</h2>
                             <h3>score: {leftScore}</h3>
                         </div>
                     </div>
                     <div className={styles.player}>
-                        <img src={rightplayeravatar} className={styles.userImg}/>
+                        <img src={avatar} className={styles.userImg}/>
                         <div className={styles.playerInfo}>
-                            <h2>{rightplayername}</h2>
+                            <h2>{username}</h2>
                             <h3>score: {rightScore}</h3>
                         </div>
                     </div>
