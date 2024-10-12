@@ -10,6 +10,5 @@ tournaments.
 ◦ Minor module: User and Game Stats Dashboards
 ◦ Minor module: Use a database for the backend.
 ◦ Minor module: Support on all devices.
-◦ Minor module: Multiple language supports.
 ◦ Minor module: Expanding Browser Compatibility.
-8+2
+8 major 4 minor {mandatory 7 major} 1 major 4 minor left = 6 points we need 5 for bonus 1 point left =  we can remove a minor module

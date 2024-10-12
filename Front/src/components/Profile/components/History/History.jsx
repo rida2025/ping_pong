@@ -20,7 +20,7 @@ const History = ({ onFriendClick, id, ismyprofil} ) => {
 
   const fetchUserFriends = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/users/${userId}/user_friends/`);
+      const response = await axios.get(`http://10.13.2.11:8000/api/users/${userId}/user_friends/`);
       setFriends(response.data);
       console.log('Fetched friends:', response.data);
     }
@@ -35,7 +35,7 @@ const History = ({ onFriendClick, id, ismyprofil} ) => {
 
   const fetchUserBlocked = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/users/${userId}/user_blocked_friends/`);
+      const response = await axios.get(`http://10.13.2.11:8000/api/users/${userId}/user_blocked_friends/`);
       setUserBlocked(response.data);
     }
     catch {

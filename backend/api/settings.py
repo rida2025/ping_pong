@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'login',
     'pongame',
     'matches',
-    'ai_game',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -189,40 +189,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
     
     # If True, a new refresh token is issued each time one is used. Otherwise, the refresh token remains the same
-    "ROTATE_REFRESH_TOKENS": False,
+    "ROTATE_REFRESH_TOKENS": True,
     
     # If True, a refresh token is added to a blacklist after it's rotated, preventing further use of old tokens
     "BLACKLIST_AFTER_ROTATION": True,
-    
-    # If True, updates the `last_login` field in the user model every time a user logs in using a token
-    "UPDATE_LAST_LOGIN": True,
-
-    # The algorithm used to sign the token. HS256 (HMAC-SHA256) is symmetric and uses the same key to both sign and verify the token
-    "ALGORITHM": "HS256",
-    
-    # The key used to sign the token. This should be the secret key from Django settings
-    "SIGNING_KEY": settings.SECRET_KEY,
-    
-    # If asymmetric algorithms like RS256 were used, this would hold the public key for verifying the token. Empty for HS256
-    "VERIFYING_KEY": "",
-    
-    # Intended audience of the token (optional, None means no specific audience is required)
-    "AUDIENCE": None,
-    
-    # The issuer of the token, typically a string or URL identifying the token provider (optional, None means no specific issuer is set)
-    "ISSUER": None,
-    
-    # Custom JSON encoder for encoding the token's payload (optional, None means the default encoder is used)
-    "JSON_ENCODER": None,
-    
-    # URL to retrieve JSON Web Keys (JWKs) for verification in case of asymmetric encryption (unused here)
-    "JWK_URL": None,
-    
-    # A number of seconds that compensates for clock skew between the client and server when verifying token timestamps
-    "LEEWAY": 0,
-
-    # The types of tokens allowed in the `Authorization` header (usually "Bearer")
-    "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 

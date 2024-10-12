@@ -1,178 +1,131 @@
-.usercard
-{
-	width: 350px;
-	height: 350px;
-	margin: 50px auto;
-  position: relative;
-	background: #fff;
-	overflow: hidden;
-	box-shadow:         0 1px 3px 0 rgba(0,0,0,0.08);
-	-moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,0.08);
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-  border-radius:         5px;
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
+/* PongParadise.css */
+
+.pong-paradise-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-position: center;
+    background-size: cover;
+    -ms-overflow-style: none; /* Add this line to disable scrollbar */
+    scrollbar-width: none; /* Add this line to disable scrollbar */
+    /* display: none; */
+
 }
 
-input
-{
-	width: 100%;
-	height: 40px;
-	border-radius:         3px;
-	-moz-border-radius:    3px;
-	-webkit-border-radius: 3px;
-	border: 1px solid #dee3e4;
-	padding: 3px 12px;
-	margin: 6px 0;
+
+.pong-paradise-card {
+
+  /* border-radius: 20px; */
+  padding: 20px;
+  max-width: 800px;
+  /* height: 400px; */
+  text-align: center;
+  box-shadow: 1px  3px 5px 3px rgb(255, 255, 255);
+  border: 1px  solid rgba(255, 255, 255, 0.2);
+  border-radius: 0px 30px 0px 30px;
+  background-color: rgba(37, 35, 60,0.9);
+
 }
 
-input:focus
-{
-	outline: none;
-	border: 1px solid #03b3b5;
-	transition:         all .5s ease-in-out;
-	-o-transition:      all .5s ease-in-out;
-	-moz-transition:    all .5s ease-in-out;
-	-webkit-transition: all .5s ease-in-out;
+.pong-paradise-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.loginbox,
-.signupbox
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	background: #fff;
-  border-radius:         5px;
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
+.pong-paradise-description {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
 }
 
-.loginbox{
-	padding: 20px 40px;
-	right: 0px;
+.pong-paradise-logo {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-.signupbox{
-	padding: 40px;
+.pong-paradise-logo img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }
 
-.login, .signup
-{
-	text-align: center;
-	color: #fff;
-	background: #03b3b5;
-	line-height: 30px;
-	opacity: 0.95;
-  cursor: pointer
+.pong-paradise-logo img:hover {
+  transform: scale(1.1);
 }
 
-.login:hover{opacity: 1}
-
-.or
-{
-	display: block;
-	width: 100%;
-	height: 1px;
-	border-bottom: 1px solid #dee3e4;
-	position: relative;
-	margin: 20px 0;
-}
-
-.or:before
-{
-	content: 'or';
-	width: 40px;
-	height: 18px;
-	position: absolute;
-	top: -5px;
-	right: calc(50% - 20px);
-	background-color: #fff;
-	text-align: center;
-	line-height: 10px;
-	color: #555
-}
-
-.loginwithintra,
-.loginwithgoogle
-{
-	width: 100%;
-	display: block;
-	margin: 15px 0;
-	color: #fff;
-	text-align: center;
-	line-height: 40px;
-	font-size: 14px;
-	opacity: .95;
-  border-radius:         3px;
-  -moz-border-radius:    3px;
-  -webkit-border-radius: 3px;
-}
-
-.loginwithintra:hover,
-.loginwithgoogle:hover
-{
-	opacity: 1;
-}
-
-.loginwithintra
-{
-	background: #212935
-}
-
-.loginwithgoogle
-{
-	background: #DB4A37;
-}
-
-.loginwithintra .icon,
-.loginwithgoogle .icon
-{
-	float: left;
-	font-size: 21px;
-	width: 50px;
-	height: 26px;
-	margin: 7px;
-	padding: 2px;
-	text-align: center;
-	border-right: 1px solid #fff;
-}
-
-/**** footer *****/
-
-.usercard .footer
-{
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	height: 25px;
-	text-align: center;
-	color: #666;
-	font-size: 13px;
-	font-family: sans-serif;
-}
-
-.footer a
-{
-	color: #03b3b5;
-}
-
-@keyframes heart{
-  0%{
-    transform:         scale(1, 1);
-    -ms-transform:     scale(1, 1);
-    -webkit-transform: scale(1, 1);
+@media (max-width: 768px) {
+  .pong-paradise-card {
+    max-width: 800px;
+    height: 100px;
   }
-  50%{
-    transform:         scale(1.5, 1.5);
-    -ms-transform:     scale(1.5, 1.5);
-    -webkit-transform: scale(1.5, 1.5);
+
+  .pong-paradise-title {
+    font-size: 2rem;
   }
-  100%{
-    transform:         scale(1, 1);
-    -ms-transform:     scale(1, 1);
-    -webkit-transform: scale(1, 1);
+
+  .pong-paradise-description {
+    font-size: 0.9rem;
+  }
+
+  .pong-paradise-logo {
+    font-size: 2.5rem;
+  }
+  .pong-paradise-logo img {
+    width: 80px;
+    height: 80px;
   }
 }
+
+@media (max-width: 576px) {
+  .pong-paradise-card {
+    padding: 20px;
+    max-width: 800px;
+    height: 400px;
+  }
+
+  .pong-paradise-title {
+    font-size: 1.5rem;
+  }
+
+  .pong-paradise-description {
+    font-size: 0.8rem;
+  }
+
+  .pong-paradise-logo {
+    font-size: 2rem;
+  }
+  .pong-paradise-logo img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 50px) {
+  .pong-paradise-card {
+    padding: 10px;
+    max-width: 800px;
+    height: 400px;
+  }
+
+  .pong-paradise-title {
+    font-size: 1rem;
+  }
+
+  .pong-paradise-description {
+    font-size: 0.5rem;
+  }
+
+  .pong-paradise-logo {
+    font-size: 1.5rem;
+  }
+  .pong-paradise-logo img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+

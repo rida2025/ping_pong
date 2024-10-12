@@ -59,11 +59,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
             two_factor=False,
             otp='000000',
             otp_verified=False,
-            is_login=True
         )
-        user.avatar = user_data['avatar']
-        user.cover = user_data['avatar']
-        user.email = user_data['email']
         user.set_unusable_password()  # Assuming password is not used
         user.save()
         return user
@@ -131,7 +127,6 @@ class PlayerViewSet(viewsets.ModelViewSet):
                 'avatar': user.avatar,
                 'email': user.email,
                 'two_factor': user.two_factor,
-                'is_online': user.status_network,
             }
             response_data = {
                 'msg': 'success',
@@ -143,6 +138,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
                 value=tokens['access'],
                 httponly=True,
                 secure=True,
+                samesite='None'
             )
             return response
         except requests.RequestException as e:
@@ -186,7 +182,6 @@ class PlayerViewSet(viewsets.ModelViewSet):
             'avatar': player['avatar'],
             'email': player['email'],
             'two_factor': player['two_factor'],
-            'is_online': player['is_online']
         }
             for player in serializer.data
         ]

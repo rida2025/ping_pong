@@ -43,9 +43,3 @@ psycopg2-binary==2.9.9
 pyotp
 qrcode
 python-dotenv
-gym
-numpy
-stable-baselines3
-torch
-torchvision
-torchaudio

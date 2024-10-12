@@ -20,14 +20,6 @@ const PingGame = () => {
       </div>
       <div className={styl.card}>
         <div className={styl.cardName}>
-          <p >Ai Pong</p>
-        </div>
-        <div className={styl.Image}>
-          <Link to={"/games/aipong"}><img src={local}/></Link>
-        </div>
-      </div>
-      <div className={styl.card}>
-        <div className={styl.cardName}>
           <p >1 Vs 1</p>
         </div>
         <div className={styl.Image}>
