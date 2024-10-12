@@ -420,11 +420,39 @@ class inviteConsumer(AsyncWebsocketConsumer):
 
         action = data.get('action')
         value = data.get('value', 0)
-
+        
+        #this case for invite friend to play
         if action == 'friend_game':
             if action == 'friend_game':
-                self.game_queue.append({
+                inviteConsumer.game_queue[value] = {
                     'id': value,
                     'players': [data.get('player1'), data.get('player2')],
-                    'counter': 30
-                })
+                    'counter': 30,
+                    'connected': 0
+                }
+                #here i need to start runing the counter
+                #...
+
+        #this case if a player join the (invite friend game)
+        if action == 'join_game':
+            if len(inviteConsumer.game_queue) > 0:
+                for game in self.game_queue:
+                    if game['id'] == value:
+                        if data.get('player') not in game['players']:
+                            self.close()
+                        elif data.get('player') in game['players']:
+                            inviteConsumer.game_queue[value]['connected'] += 1
+                            
+                        break
+            else:
+                self.close()
+
+        #if both players joined start the game
+        if len(inviteConsumer.game_queue) > 0:
+            for i, game in enumerate(inviteConsumer.game_queue):
+                if game['connected'] == 2:
+                    #start the game
+                    #...
+                    #remove the game from the queue
+                    del inviteConsumer.game_queue[i]
+                    break
