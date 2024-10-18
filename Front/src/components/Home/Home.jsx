@@ -6,13 +6,13 @@ import Tmp1 from './components/Tmp1/Tmp1'
 import { useState, useEffect } from 'react';
 import Tmp2 from './components/Tmp2/Tmp2';
 import SearchCard from './components/SearchCard/Searchcard';
-
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const handleClick = () => {
-        navigate('/games');
+        navigate('/game');
     }
 
     const handleResize = () => {
@@ -40,7 +40,7 @@ const Home = () => {
         const fetchSearchResults = async () => {
           if (searchQuery.trim()) {
             const response = await fetch(
-              `http://10.11.10.12:8000/api/users/search/?q=${searchQuery}`
+              `http://10.11.10.15:8000/api/users/search/?q=${searchQuery}`
             );
             const data = await response.json();
             console.log(data);

@@ -33,32 +33,33 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
-    'channels',
-    'corsheaders',
     'login',
     'pongame',
     'matches',
     'chat',
+    'notification',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -179,20 +180,12 @@ REST_FRAMEWORK = {
 #************  khbouych ************
 
 AUTH_USER_MODEL = 'login.Player'
-
 # JWT settings
 SIMPLE_JWT = {
-    # Controls how long the access token is valid before it expires
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
-    
-    # Controls how long the refresh token is valid before it expires
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
-    
-    # If True, a new refresh token is issued each time one is used. Otherwise, the refresh token remains the same
-    "ROTATE_REFRESH_TOKENS": True,
-    
-    # If True, a refresh token is added to a blacklist after it's rotated, preventing further use of old tokens
-    "BLACKLIST_AFTER_ROTATION": True,
+   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
+   'ROTATE_REFRESH_TOKENS': True,
+   'BLACKLIST_AFTER_ROTATION': True
 }
 
 

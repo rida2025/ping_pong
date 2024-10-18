@@ -7,10 +7,10 @@ class Player(AbstractUser):
         ('online', _('online')),
         ('offline', _('offline')),
     )
-    STATUS_GAME = (
+    GAME_STATUS = (
+        ('available', _('available')),
         ('waiting', _('waiting')),
         ('playing', _('playing')),
-        ('finished', _('finished')),
         ('offline', _('offline')),
     )
     username = models.CharField(max_length=255, default='default_username', unique=True, blank=False)
@@ -18,19 +18,21 @@ class Player(AbstractUser):
     email = models.EmailField(max_length=200, default='default')
     wins = models.IntegerField(default=0)
     losses = models.IntegerField(default=0)
-    exp_game = models.IntegerField(default=0)
+    exp_game = models.IntegerField(default=100)
     status_network = models.CharField(max_length=10, choices=STATUS, default='offline')
-    status_game = models.CharField(max_length=10, choices=STATUS_GAME, default='offline')
+    status_game = models.CharField(max_length=10, choices=GAME_STATUS, default='offline')
     two_factor = models.BooleanField(default=False)
     otp = models.CharField(max_length=6, default='000000')
     otp_verified = models.BooleanField(default=False)
     blocked_users = models.ManyToManyField('self', symmetrical=False, related_name='blocked_by', blank=True)
-    # lst_friends = models.ManyToManyField('self', symmetrical=False, related_name='friend', blank=True)
-    # lst_pending_friends = models.ManyToManyField('self', symmetrical=False, related_name='pending_friend', blank=True)
-   
 
     class Meta:
-            db_table = 'player'
+        db_table = 'player'
+
+    def save(self, *args, **kwargs):
+        if self.status_network == 'offline':
+            self.status_game = 'offline'
+        super().save(*args, **kwargs)
 
     def block_user(self, user_to_block):
         self.blocked_users.add(user_to_block)

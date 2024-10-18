@@ -72,12 +72,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 try:
                     user1 = await self.get_user_by_username(username)
                     user2 = self.scope['user']
-                    if user2 is None:
-                        await self.send(text_data=json.dumps({
-                            'type': 'USER_SELECTED',
-                            'status': 'ERROR',
-                            'message': 'Authentication required'
-                        }))
+                    if user2 is None or user1 is None:
                         return
                     chat_room = await self.create_or_get_chat_room(user1, user2)
                     chat_room_serializer = await self.get_chat_room_serializer(chat_room)
@@ -180,7 +175,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def get_user_by_username(self, username):
-        return Player.objects.get(username=username)
+        player = Player.objects.get(username=username)
+        if player == self.scope["user"]:
+            return None
+        return player
 
     @database_sync_to_async
     def get_user_by_id(self, user_id):
@@ -188,13 +186,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
     
     @database_sync_to_async
     def create_or_get_chat_room(self, sender_user, receiver_user):
-        # Try to get an existing chat room
         chat_room = ChatRoom.objects.filter(
             models.Q(user1=sender_user, user2=receiver_user) |
             models.Q(user1=receiver_user, user2=sender_user)
         ).first()
 
-        # If no chat room exists, create a new one
         if not chat_room:
             chat_room = ChatRoom.objects.create(user1=sender_user, user2=receiver_user)
 
@@ -219,7 +215,6 @@ class UserNotificationConsumer(AsyncWebsocketConsumer):
             return
         self.notification_group_name = f'user_{self.user.id}_notification'
 
-        # Join room group
         await self.channel_layer.group_add(
             self.notification_group_name,
             self.channel_name
@@ -228,20 +223,17 @@ class UserNotificationConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, close_code):
-        # Leave room group
         await self.channel_layer.group_discard(
             self.notification_group_name,
             self.channel_name
         )
 
     async def receive(self, text_data):
-        # We don't expect to receive messages here, but you can add handling if needed
         pass
 
     async def new_room_notification(self, event):
         room_data = event['room_data']
 
-        # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'type': 'NEW_ROOM',
             'room_data': room_data

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import React, {useState, useEffect} from 'react'
 import styl from './Sidebar.module.css'
 import pinglogo from './assets/pinglogo.png'
@@ -8,15 +8,31 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { AiOutlineLogout } from "react-icons/ai";
-import { IoIosNotifications } from "react-icons/io";
 import { MdOutlineHome } from "react-icons/md";
 import CmpCard from '../CmpCard/CmpCard';
-
+import { useNotificationWS } from '../../contexts/NotifWSContext.jsx';
+import { MdNotifications, MdNotificationImportant } from "react-icons/md";
+import { useLocationContext } from '../../contexts/LocationContext.jsx';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true)
     const [hasNotification, setHasNotification] = useState(false);
     const [sidebarWidth, setSidebarWidth] = useState('300px');
+    const { notif } = useNotificationWS();
+    const { currentLocation } = useLocationContext();
+
+    useEffect(() => {
+        if (notif && notif.status === 'pending' && currentLocation !== '/notification') {
+            setHasNotification(true);
+        }
+    }, [notif]);
+
+    useEffect(() => {
+        if (currentLocation === '/notification') {
+            setHasNotification(false);
+        }
+    }, [currentLocation]);
+
 
     const handleClick = () => {
         setIsOpen(!isOpen)
@@ -54,7 +70,8 @@ const Sidebar = () => {
             <CmpCard isOpen={isOpen} ICON={CgProfile} name={'Profile'} link={'/profile'}/>
             <CmpCard isOpen={isOpen} ICON={IoChatbubbleEllipsesOutline} name={'Chat'} link={'/chat'}/>
             <CmpCard isOpen={isOpen} ICON={IoLogoGameControllerB} name={'Game'} link={'/games'}/>
-            <CmpCard isOpen={isOpen} ICON={IoIosNotifications} name={'Notification'} link={'/notification'}/>
+            {/* <CmpCard isOpen={isOpen} ICON={IoIosNotifications} name={'Notification'} link={'/notification'}/> */}
+            <CmpCard isOpen={isOpen} ICON={hasNotification ? MdNotificationImportant : MdNotifications} name={'Notification'} link={'/notification'}/>
             <CmpCard isOpen={isOpen} ICON={CiSettings} name={'Setting'} link={'/setting'}/>
             <CmpCard isOpen={isOpen} ICON={AiOutlineLogout} name={'Log Out'} top={'43%'}/>
         </div>

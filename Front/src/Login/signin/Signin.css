@@ -1,0 +1,24 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    margin-top: 1rem;
+}
+
+.error-message {
+    color: red;
+    margin-top: 0.5rem;
+}
+
+.success-message {
+    color: green;
+    margin-top: 0.5rem;
+}

@@ -31,7 +31,7 @@ class ChatRoom(models.Model):
 class Message(models.Model):
     chat_room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE, related_name="messages")
     sender = models.ForeignKey(Player, on_delete=models.CASCADE, related_name="sent_message")
-    content = models.TextField()
+    content = models.TextField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
 
@@ -45,3 +45,5 @@ class Message(models.Model):
         self.chat_room.modified_at = timezone.now()
         self.chat_room.save()
         super().save(*args, **kwargs)
+
+    
